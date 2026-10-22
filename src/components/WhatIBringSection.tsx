@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import DecryptedText from './DecryptedText';
 import Lanyard from './Lanyard/Lanyard';
+import { GalaxyButton } from './GalaxyButton';
 
 interface WhatIBringSectionProps {
   onOpenBeyondCode: () => void;
+  onOpenLilyStudio?: () => void;
 }
 
-export const WhatIBringSection: React.FC<WhatIBringSectionProps> = ({ onOpenBeyondCode }) => {
+export const WhatIBringSection: React.FC<WhatIBringSectionProps> = ({ 
+  onOpenBeyondCode,
+  onOpenLilyStudio,
+}) => {
   const [isBtnHovered, setIsBtnHovered] = useState(false);
 
   return (
@@ -40,7 +45,7 @@ export const WhatIBringSection: React.FC<WhatIBringSectionProps> = ({ onOpenBeyo
             </div>
           </div>
 
-        {/* Right Side: 4 Clean Stacked Cards with visible gaps and Sticky Scroll-on Overlay Effect */}
+        {/* Right Side: 5 Clean Stacked Cards with visible gaps and Sticky Scroll-on Overlay Effect */}
         <div className="lg:col-span-8 flex flex-col space-y-[28px] sm:space-y-[32px] md:space-y-[36px] pb-[100vh] items-start w-full relative z-10">
           {/* Card 1: Intelligent Engineering */}
           <div className="sticky top-24 sm:top-28 z-10 w-full min-h-[300px] sm:min-h-[320px] md:min-h-[340px] bg-[#000000] p-6 sm:p-8 md:p-9 relative overflow-hidden flex flex-col justify-start">
@@ -78,10 +83,41 @@ export const WhatIBringSection: React.FC<WhatIBringSectionProps> = ({ onOpenBeyo
             </div>
           </div>
 
-          {/* Card 4: More About Me ? */}
+          {/* Card 4: LILY Studio */}
+          <div className="sticky top-24 sm:top-28 z-16 w-full min-h-[300px] sm:min-h-[320px] md:min-h-[340px] bg-[#000000] p-6 sm:p-8 md:p-9 relative overflow-hidden flex flex-col justify-start">
+            <div className="relative z-10 space-y-4 max-w-3xl">
+              <h3 className="text-[24px] sm:text-[30px] md:text-[36px] font-biz-mincho font-normal tracking-tight leading-tight select-none">
+                <span className="text-white">LIL</span>
+                <span className="text-[#b91c1c]">Y</span>
+                <span className="text-white"> Studio</span>
+              </h3>
+              <p className="text-neutral-300 text-[15px] sm:text-[18px] md:text-[20px] leading-[1.5] font-inter">
+                Building LILY Studio, a Design x Development studio that creates beautiful{' '}
+                <br className="hidden md:inline" />
+                things that makes sense.
+              </p>
+              <div className="pt-2">
+                <GalaxyButton
+                  backgroundImage="/fg.png"
+                  onClick={() => {
+                    if (onOpenLilyStudio) {
+                      onOpenLilyStudio();
+                    } else {
+                      const contactEl = document.getElementById('contact');
+                      if (contactEl) {
+                        contactEl.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Card 5: More About Me ? */}
           <div 
             id="more-about-me"
-            className="sticky top-24 sm:top-28 z-16 w-full min-h-[300px] sm:min-h-[320px] md:min-h-[340px] bg-[#000000] p-6 sm:p-8 md:p-9 relative overflow-hidden flex flex-col justify-start"
+            className="sticky top-24 sm:top-28 z-18 w-full min-h-[300px] sm:min-h-[320px] md:min-h-[340px] bg-[#000000] p-6 sm:p-8 md:p-9 relative overflow-hidden flex flex-col justify-start"
           >
             <div className="relative z-10 space-y-5">
               <h3 className="text-[24px] sm:text-[30px] md:text-[36px] font-bold text-[#b91c1c] uppercase font-inter tracking-tight leading-tight">

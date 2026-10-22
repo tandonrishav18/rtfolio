@@ -76,6 +76,14 @@ video::-webkit-media-controls-overlay-enclosure {
   font-weight: 400;
 }
 
+.font-biz-mincho {
+  font-family: 'BIZ UDPMincho', serif;
+}
+
+.font-geist {
+  font-family: 'Geist', sans-serif;
+}
+
 /* Custom subtle scrollbar (vertical only) */
 ::-webkit-scrollbar {
   width: 6px;

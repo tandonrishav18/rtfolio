@@ -22,6 +22,7 @@ import { CineSuggestWebpage } from './components/CineSuggestWebpage';
 import { ClimoraWebpage } from './components/ClimoraWebpage';
 import { BePlusWebpage } from './components/BePlusWebpage';
 import { NivalaWebpage } from './components/NivalaWebpage';
+import { LilyStudioWebpage } from './components/LilyStudioWebpage';
 import { ExperienceItem, PublicationItem, CertificationItem, Project } from './types';
 import { PROJECTS, PERSONAL_INFO } from './data';
 
@@ -34,6 +35,7 @@ export default function App() {
   const [isCineSuggestWebpageOpen, setIsCineSuggestWebpageOpen] = useState(false);
   const [isClimoraWebpageOpen, setIsClimoraWebpageOpen] = useState(false);
   const [isBePlusWebpageOpen, setIsBePlusWebpageOpen] = useState(false);
+  const [isLilyStudioWebpageOpen, setIsLilyStudioWebpageOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isBeyondCodeOpen, setIsBeyondCodeOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -110,6 +112,7 @@ export default function App() {
     setIsCineSuggestWebpageOpen(false);
     setIsClimoraWebpageOpen(false);
     setIsBePlusWebpageOpen(false);
+    setIsLilyStudioWebpageOpen(false);
     setSelectedProject(null);
     setSelectedExperience(null);
     setSelectedCertification(null);
@@ -174,7 +177,10 @@ export default function App() {
           <PublicationsSection onSelectPublication={(pub) => setSelectedPublication(pub)} />
 
           {/* 8. What I Bring Section */}
-          <WhatIBringSection onOpenBeyondCode={() => setIsBeyondCodeOpen(true)} />
+          <WhatIBringSection 
+            onOpenBeyondCode={() => setIsBeyondCodeOpen(true)} 
+            onOpenLilyStudio={() => setIsLilyStudioWebpageOpen(true)}
+          />
         </div>
       </main>
 
@@ -211,6 +217,14 @@ export default function App() {
         onClose={() => setIsBePlusWebpageOpen(false)}
         onOpenResume={handleOpenResume}
         onNextProject={() => handleNextProjectFromCurrent('be-plus')}
+      />
+
+      {/* LILY Studio Dedicated Web App Page (Full Experience) */}
+      <LilyStudioWebpage 
+        isOpen={isLilyStudioWebpageOpen} 
+        onClose={() => setIsLilyStudioWebpageOpen(false)}
+        onNavClick={handleGlobalNavClick}
+        onOpenResume={handleOpenResume}
       />
 
       {/* Modals & Dialog Viewers */}
