@@ -171,6 +171,7 @@ export const LilyStudioWebpage: React.FC<LilyStudioWebpageProps> = ({
             setIsMenuOpen={setIsMenuOpen}
             onOpenResume={onOpenResume}
             onNavClick={handleNavClick}
+            isStatic={true}
           />
 
           {/* Back Arrow Button (Clean chevron arrow with green hover - identical to project pages) */}
@@ -185,8 +186,8 @@ export const LilyStudioWebpage: React.FC<LilyStudioWebpageProps> = ({
             </button>
           </div>
 
-          {/* Main Webpage Canvas - Top gap reduced by 5px */}
-          <div className="w-full flex flex-col items-center bg-[#000000] pt-[81px] sm:pt-[89px] pb-24 sm:pb-32">
+          {/* Main Webpage Canvas - Significantly reduced top gap to navbar */}
+          <div className="w-full flex flex-col items-center bg-[#000000] pt-[56px] sm:pt-[46px] md:pt-[40px] lg:pt-[44px] pb-24 sm:pb-32">
             <div className="w-full max-w-[1920px] relative">
               <picture>
                 <source srcSet="/LILY.webp" type="image/webp" />

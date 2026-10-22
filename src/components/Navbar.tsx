@@ -6,15 +6,17 @@ interface NavbarProps {
   isMenuOpen?: boolean;
   setIsMenuOpen?: React.Dispatch<React.SetStateAction<boolean>> | ((val: boolean | ((prev: boolean) => boolean)) => void);
   onNavClick?: (href: string) => void;
+  isStatic?: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   isMenuOpen: controlledIsMenuOpen,
   setIsMenuOpen: controlledSetIsMenuOpen,
   onNavClick,
+  isStatic = false,
 }) => {
-  // State: starts as compact closed capsule, then expands open on load
-  const [isExpanded, setIsExpanded] = useState(false);
+  // State: starts as compact closed capsule (or expanded if isStatic)
+  const [isExpanded, setIsExpanded] = useState(isStatic);
   const [internalMenuOpen, setInternalMenuOpen] = useState(false);
   const [isInContactSection, setIsInContactSection] = useState(false);
 
@@ -23,11 +25,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // Dynamic Island load animation: holds compact pill for 1.5s, then smoothly opens up
   useEffect(() => {
+    if (isStatic) return;
     const timer = setTimeout(() => {
       setIsExpanded(true);
     }, 1500);
     return () => clearTimeout(timer);
-  }, []);
+  }, [isStatic]);
 
   // Detect when Contact section is in the viewport to switch navbar color
   useEffect(() => {
@@ -96,9 +99,9 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="w-full max-w-[400px] flex flex-col items-center pointer-events-none">
         {/* Dynamic Island Capsule - Expands / Shrinks on blank click */}
         <motion.div
-          layout
+          layout={!isStatic}
           onClick={handleNavbarClick}
-          initial={{ width: 232, height: 51, opacity: 0, scale: 0.95 }}
+          initial={isStatic ? false : { width: 232, height: 51, opacity: 0, scale: 0.95 }}
           animate={{
             width: !isExpanded ? 232 : 'min(92vw, 400px)',
             height: 51,
@@ -106,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             scale: 1,
             backgroundColor: isInContactSection ? '#b91c1c' : '#000000',
           }}
-          transition={{
+          transition={isStatic ? { duration: 0 } : {
             width: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
             height: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
             opacity: { duration: 0.5, ease: 'easeOut' },
@@ -133,10 +136,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                     e.preventDefault();
                     handleLinkClick('#hero');
                   }}
-                  initial={{ opacity: 0, x: -12, filter: 'blur(3px)' }}
+                  initial={isStatic ? false : { opacity: 0, x: -12, filter: 'blur(3px)' }}
                   animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
                   exit={{ opacity: 0, x: -10 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                  transition={isStatic ? { duration: 0 } : { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                   className={`font-jersey text-[28px] sm:text-[30px] font-normal text-white transition-colors tracking-normal leading-none flex items-center select-none cursor-pointer ${
                     isInContactSection ? 'hover:text-black' : 'hover:text-[#b91c1c]'
                   }`}
@@ -150,10 +153,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <AnimatePresence>
               {isExpanded && (
                 <motion.div
-                  initial={{ opacity: 0, x: 12, filter: 'blur(3px)' }}
+                  initial={isStatic ? false : { opacity: 0, x: 12, filter: 'blur(3px)' }}
                   animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
                   exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+                  transition={isStatic ? { duration: 0 } : { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
                   className="flex items-center space-x-5 sm:space-x-6 text-[12px] sm:text-[13px] font-mono-code font-semibold tracking-[0.16em] text-white uppercase"
                 >
                   {/* CONTACT Link */}
