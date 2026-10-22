@@ -26,10 +26,11 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenResume }) =>
     >
       <div className="w-full max-w-7xl mx-auto flex-1 flex flex-col justify-between gap-10 sm:gap-12 relative font-inter">
         {/* Main Content Area */}
-        <div className="w-full flex flex-col md:flex-row justify-between items-start gap-10 md:gap-0">
-          {/* Left Column: Heading -> Available Subtitle -> Check Resume Button -> Contact Info */}
-          <div className="flex flex-col items-start max-w-xl mt-2 sm:mt-4 md:mt-[21px] lg:mt-[50.5px]">
-            {/* Main Headline: LET'S in Inter, Rotating Words in Jersey 10 with 3px letter spacing */}
+        <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-stretch gap-10 md:gap-0">
+          {/* Left Column: Heading -> Available Subtitle -> Check Resume Button -> Contact Info -> Handmade Note */}
+          <div className="flex flex-col justify-between items-start max-w-xl mt-2 sm:mt-4 md:mt-[21px] lg:mt-[50.5px] md:self-stretch">
+            <div className="flex flex-col items-start">
+              {/* Main Headline: LET'S in Inter, Rotating Words in Jersey 10 with 3px letter spacing */}
             <h2 className="text-[34px] sm:text-[44px] md:text-[48px] font-bold font-inter text-white uppercase leading-none inline-flex items-baseline gap-3.5 sm:gap-4.5 md:gap-5 whitespace-nowrap">
               <span className="tracking-[3px]" style={{ letterSpacing: '3px' }}>LET’S</span>
               <span className="inline-block overflow-hidden relative align-baseline h-[1.25em] text-[#c01e1e]">
@@ -88,6 +89,18 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenResume }) =>
               </p>
             </div>
           </div>
+
+          {/* Bottom Left Note: Aligned with the bottom of LinkedIn / Instagram / GitHub */}
+          <div className="mt-14 sm:mt-16 md:mt-0 md:mb-[5px] text-left">
+            <p 
+              id="handmade-note"
+              className="font-caveat font-normal text-[18px] text-white select-none tracking-normal leading-none"
+              style={{ fontFamily: '"Caveat", cursive', fontSize: '18px', fontWeight: 400 }}
+            >
+              Handmade with 🫀 and 🧠
+            </p>
+          </div>
+        </div>
 
           {/* Right Column: PixelTransition Card -> Connect With Me on -> Social Icons */}
           <div className="flex flex-col items-start md:items-end gap-5 sm:gap-6 self-start md:self-auto mt-16 sm:mt-20 md:mt-[110px] lg:mt-[150px]">
@@ -247,17 +260,6 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenResume }) =>
               </a>
             </div>
           </div>
-        </div>
-
-        {/* Bottom Note: Aligned so it ends where LinkedIn / Instagram / GitHub text ends on the right */}
-        <div className="w-full pt-16 sm:pt-20 flex justify-end text-right">
-          <p 
-            id="handmade-note"
-            className="font-caveat font-normal text-[18px] text-white select-none tracking-normal leading-none text-right"
-            style={{ fontFamily: '"Caveat", cursive', fontSize: '18px', fontWeight: 400 }}
-          >
-            Handmade with 🫀 and 🧠
-          </p>
         </div>
       </div>
     </footer>
