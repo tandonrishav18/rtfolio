@@ -117,15 +117,17 @@ export const LilyStudioWebpage: React.FC<LilyStudioWebpageProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const reel2Ref = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen) {
+      if (containerRef.current) {
+        containerRef.current.scrollTop = 0;
+      }
       if (videoRef.current) {
-        videoRef.current.currentTime = 0;
         videoRef.current.play().catch(() => {});
       }
       if (reel2Ref.current) {
-        reel2Ref.current.currentTime = 0;
         reel2Ref.current.play().catch(() => {});
       }
       document.body.style.overflow = 'hidden';
@@ -140,10 +142,13 @@ export const LilyStudioWebpage: React.FC<LilyStudioWebpageProps> = ({
     } else {
       if (videoRef.current) {
         videoRef.current.pause();
+        videoRef.current.currentTime = 0;
       }
       if (reel2Ref.current) {
         reel2Ref.current.pause();
+        reel2Ref.current.currentTime = 0;
       }
+      setIsMenuOpen(false);
       document.body.style.overflow = 'unset';
     }
   }, [isOpen, onClose]);
@@ -156,115 +161,127 @@ export const LilyStudioWebpage: React.FC<LilyStudioWebpageProps> = ({
   };
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="fixed inset-0 z-50 bg-[#000000] text-white overflow-y-auto overflow-x-hidden selection:bg-red-600 selection:text-white"
-        >
-          {/* Top Navbar in same place, style, and way as throughout the portfolio */}
-          <Navbar 
-            isMenuOpen={isMenuOpen}
-            setIsMenuOpen={setIsMenuOpen}
-            onOpenResume={onOpenResume}
-            onNavClick={handleNavClick}
-            isStatic={true}
-          />
+    <div
+      ref={containerRef}
+      style={{
+        opacity: isOpen ? 1 : 0,
+        visibility: isOpen ? 'visible' : 'hidden',
+        pointerEvents: isOpen ? 'auto' : 'none',
+        transition: isOpen ? 'none' : 'opacity 0.2s ease-out, visibility 0.2s ease-out',
+      }}
+      aria-hidden={!isOpen}
+      className="fixed inset-0 z-50 bg-[#000000] text-white overflow-y-auto overflow-x-hidden selection:bg-red-600 selection:text-white"
+    >
+      {/* Top Navbar in same place, style, and way as throughout the portfolio */}
+      <Navbar 
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        onOpenResume={onOpenResume}
+        onNavClick={handleNavClick}
+        isStatic={true}
+      />
 
-          {/* Back Arrow Button (Clean chevron arrow with green hover - identical to project pages) */}
-          <div className="fixed top-5 sm:top-6 left-5 sm:left-8 z-50">
-            <button 
-              type="button"
-              onClick={onClose}
-              className="group flex items-center justify-center p-1.5 bg-transparent transition-colors duration-200 cursor-pointer select-none border-0 shadow-none outline-none"
-              aria-label="Back to Portfolio"
-            >
-              <ChevronLeft className="w-7 h-7 sm:w-8 sm:h-8 text-white group-hover:text-[#c7ff8b] stroke-[3] transition-colors duration-200" />
-            </button>
+      {/* Back Arrow Button (Clean chevron arrow with green hover - identical to project pages) */}
+      <div className="fixed top-5 sm:top-6 left-5 sm:left-8 z-[60]">
+        <button 
+          type="button"
+          onClick={onClose}
+          className="group flex items-center justify-center p-1.5 bg-transparent transition-colors duration-200 cursor-pointer select-none border-0 shadow-none outline-none"
+          aria-label="Back to Portfolio"
+        >
+          <ChevronLeft className="w-7 h-7 sm:w-8 sm:h-8 text-white group-hover:text-[#c7ff8b] stroke-[3] transition-colors duration-200" />
+        </button>
+      </div>
+
+      {/* Main Webpage Canvas - Significantly reduced top gap to navbar */}
+      <div className="w-full flex flex-col items-center bg-[#000000] pt-[56px] sm:pt-[46px] md:pt-[40px] lg:pt-[44px] pb-24 sm:pb-32">
+        <div className="w-full max-w-[1920px] relative">
+          <picture>
+            <source srcSet="/LILY.webp" type="image/webp" />
+            <img
+              src="/LILY.webp"
+              alt="LILY Studio"
+              className="w-full h-auto block select-none"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
+
+          {/* LILY Studio Reel Video Overlay (Replacing VIDEOOOOO) */}
+          <div
+            style={{
+              left: '7.8125%',
+              top: '7.0661%',
+              width: '84.375%',
+              height: '11.4463%',
+            }}
+            className="absolute z-10 overflow-hidden bg-black flex items-center justify-center pointer-events-none select-none"
+          >
+            <video
+              ref={videoRef}
+              src="/reel1.mp4"
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onCanPlay={(e) => {
+                if (isOpen) {
+                  e.currentTarget.play().catch(() => {});
+                }
+              }}
+              disablePictureInPicture
+              controls={false}
+              className="w-full h-full object-cover block"
+            />
           </div>
 
-          {/* Main Webpage Canvas - Significantly reduced top gap to navbar */}
-          <div className="w-full flex flex-col items-center bg-[#000000] pt-[56px] sm:pt-[46px] md:pt-[40px] lg:pt-[44px] pb-24 sm:pb-32">
-            <div className="w-full max-w-[1920px] relative">
-              <picture>
-                <source srcSet="/LILY.webp" type="image/webp" />
-                <img
-                  src="/LILY.png"
-                  alt="LILY Studio"
-                  className="w-full h-auto block select-none"
-                  loading="eager"
-                  decoding="async"
-                />
-              </picture>
+          {/* Interactive Button 1: VIEW OUR SOCIAL PRESENCE */}
+          <LilyInteractiveButton
+            normalImage="/btn1_tight.png"
+            hoverOverlayImage="/btn1_hover_overlay.png"
+            ariaLabel="View Our Social Presence"
+            style={{
+              left: '32.5%',
+              top: '32.252%',
+              width: '35%',
+              height: '2.025%',
+            }}
+            onClick={() => {
+              window.open(
+                'https://www.instagram.com/lily.studio_hq?obrf=M2M3aWl4ZjBzNzAw&utm_source=qr',
+                '_blank',
+                'noopener,noreferrer'
+              );
+            }}
+          />
 
-              {/* LILY Studio Reel Video Overlay (Replacing VIDEOOOOO) */}
-              <div
-                style={{
-                  left: '7.8125%',
-                  top: '7.0661%',
-                  width: '84.375%',
-                  height: '11.4463%',
-                }}
-                className="absolute z-10 overflow-hidden bg-black flex items-center justify-center pointer-events-none select-none"
-              >
-                <video
-                  ref={videoRef}
-                  src="/reel1.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  disablePictureInPicture
-                  controls={false}
-                  className="w-full h-full object-cover block"
-                />
-              </div>
-
-              {/* Interactive Button 1: VIEW OUR SOCIAL PRESENCE */}
-              <LilyInteractiveButton
-                normalImage="/btn1_tight.png"
-                hoverOverlayImage="/btn1_hover_overlay.png"
-                ariaLabel="View Our Social Presence"
-                style={{
-                  left: '32.5%',
-                  top: '32.252%',
-                  width: '35%',
-                  height: '2.025%',
-                }}
-                onClick={() => {
-                  window.open(
-                    'https://www.instagram.com/lily.studio_hq?obrf=M2M3aWl4ZjBzNzAw&utm_source=qr',
-                    '_blank',
-                    'noopener,noreferrer'
-                  );
-                }}
-              />
-
-              {/* LILY Studio Cathedral Video Overlay (Replacing photo with reel2.mp4) */}
-              <div
-                style={{
-                  left: '7.6562%',
-                  top: '58.8223%',
-                  width: '84.7917%',
-                  height: '21.5289%',
-                }}
-                className="absolute z-10 overflow-hidden bg-black flex items-center justify-center pointer-events-none select-none"
-              >
-                <video
-                  ref={reel2Ref}
-                  src="/reel2.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  disablePictureInPicture
-                  controls={false}
-                  className="w-full h-full object-cover block"
-                />
-              </div>
+          {/* LILY Studio Cathedral Video Overlay (Replacing photo with reel2.mp4) */}
+          <div
+            style={{
+              left: '7.6562%',
+              top: '58.8223%',
+              width: '84.7917%',
+              height: '21.5289%',
+            }}
+            className="absolute z-10 overflow-hidden bg-black flex items-center justify-center pointer-events-none select-none"
+          >
+            <video
+              ref={reel2Ref}
+              src="/reel2.mp4"
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onCanPlay={(e) => {
+                if (isOpen) {
+                  e.currentTarget.play().catch(() => {});
+                }
+              }}
+              disablePictureInPicture
+              controls={false}
+              className="w-full h-full object-cover block"
+            />
+          </div>
 
               {/* Text Above Cathedral Video */}
               <div
@@ -310,8 +327,6 @@ export const LilyStudioWebpage: React.FC<LilyStudioWebpageProps> = ({
               </div>
             </div>
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
+        </div>
+      );
+    };
