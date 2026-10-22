@@ -84,6 +84,10 @@ video::-webkit-media-controls-overlay-enclosure {
   font-family: 'Geist', sans-serif;
 }
 
+.font-caveat {
+  font-family: 'Caveat', cursive;
+}
+
 /* Custom subtle scrollbar (vertical only) */
 ::-webkit-scrollbar {
   width: 6px;

@@ -22,7 +22,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenResume }) =>
   return (
     <footer 
       id="contact" 
-      className="w-full min-h-screen min-h-[100dvh] bg-[#000000] text-white select-none px-6 sm:px-10 md:px-[40px] flex flex-col justify-between relative z-10 pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-[22px] sm:pb-[30px] md:pb-[38px]"
+      className="w-full min-h-screen min-h-[100dvh] bg-[#000000] text-white select-none px-6 sm:px-8 md:px-[32px] flex flex-col justify-between relative z-10 pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-[31.66px]"
     >
       <div className="w-full max-w-7xl mx-auto flex-1 flex flex-col justify-between gap-10 sm:gap-12 relative font-inter">
         {/* Main Content Area */}
@@ -247,6 +247,16 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenResume }) =>
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Bottom Left Note */}
+        <div className="w-full pt-16 sm:pt-20 text-left">
+          <p 
+            className="font-caveat font-normal text-[22px] text-white select-none tracking-normal leading-none"
+            style={{ fontFamily: '"Caveat", cursive', fontSize: '22px', fontWeight: 400 }}
+          >
+            Handmade with 🫀 and 🧠
+          </p>
         </div>
       </div>
     </footer>
