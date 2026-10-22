@@ -142,7 +142,7 @@ function Pocket({ slot, image, galleryOpen, onUpload, onPreview }) {
       {image ? (
         <button className="pocket-image" onClick={() => onPreview(image.url, `${slot.name} ${slot.index}`)} aria-label={`View ${slot.name} pocket ${slot.index}`}>
           <img
-            src={galleryOpen ? image.previewUrl : undefined}
+            src={image.previewUrl || image.url}
             alt=""
             loading="lazy"
             decoding="async"
@@ -271,7 +271,7 @@ export default function App({ onClose }) {
 
   return (
     <main className={`app ${galleryOpen ? 'gallery-open' : ''} ${!playMode && !photosReady ? 'photos-loading' : ''}`}>
-      <Canvas camera={{ position: [7, 6, 9], fov: 38 }} dpr={[1, 2]}>
+      <Canvas camera={{ position: [7, 6, 9], fov: 38 }} dpr={[1, 2]} frameloop={galleryOpen ? 'never' : 'always'}>
         <color attach="background" args={['#131313']} />
         <ambientLight intensity={0.42} />
         <directionalLight position={[5, 9, 7]} intensity={1.35} />
@@ -304,7 +304,6 @@ export default function App({ onClose }) {
               className="gallery-back portfolio-back"
               onClick={onClose}
               aria-label="Back to portfolio"
-              title="Back to portfolio"
             >
               <ChevronLeft size={32} strokeWidth={3} />
             </button>
