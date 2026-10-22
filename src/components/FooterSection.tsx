@@ -94,8 +94,8 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenResume }) =>
           <div className="mt-14 sm:mt-16 md:mt-0 md:mb-[5px] text-left">
             <p 
               id="handmade-note"
-              className="font-caveat font-normal text-[18px] text-white select-none tracking-normal leading-none"
-              style={{ fontFamily: '"Caveat", cursive', fontSize: '18px', fontWeight: 400 }}
+              className="font-caveat font-normal text-[20px] text-white select-none tracking-normal leading-none"
+              style={{ fontFamily: '"Caveat", cursive', fontSize: '20px', fontWeight: 400 }}
             >
               Handmade with 🫀 and 🧠
             </p>
