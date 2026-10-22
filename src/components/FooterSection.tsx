@@ -249,11 +249,12 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenResume }) =>
           </div>
         </div>
 
-        {/* Bottom Left Note */}
-        <div className="w-full pt-16 sm:pt-20 text-left">
+        {/* Bottom Note: Aligned so it ends where LinkedIn / Instagram / GitHub text ends on the right */}
+        <div className="w-full pt-16 sm:pt-20 flex justify-end text-right">
           <p 
-            className="font-caveat font-normal text-[22px] text-white select-none tracking-normal leading-none"
-            style={{ fontFamily: '"Caveat", cursive', fontSize: '22px', fontWeight: 400 }}
+            id="handmade-note"
+            className="font-caveat font-normal text-[18px] text-white select-none tracking-normal leading-none text-right"
+            style={{ fontFamily: '"Caveat", cursive', fontSize: '18px', fontWeight: 400 }}
           >
             Handmade with 🫀 and 🧠
           </p>
