@@ -23,6 +23,7 @@ import { ClimoraWebpage } from './components/ClimoraWebpage';
 import { BePlusWebpage } from './components/BePlusWebpage';
 import { NivalaWebpage } from './components/NivalaWebpage';
 import { LilyStudioWebpage } from './components/LilyStudioWebpage';
+import { VideoPreloader } from './components/VideoPreloader';
 import { ExperienceItem, PublicationItem, CertificationItem, Project } from './types';
 import { PROJECTS, PERSONAL_INFO } from './data';
 
@@ -40,6 +41,8 @@ export default function App() {
   const [isBeyondCodeOpen, setIsBeyondCodeOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [certificateViewerImage, setCertificateViewerImage] = useState<string | null>(null);
+  const [startHomeAnimations, setStartHomeAnimations] = useState(false);
+  const [isPreloaderComplete, setIsPreloaderComplete] = useState(false);
 
   useEffect(() => {
     if (certificateViewerImage) {
@@ -140,18 +143,27 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#131313] text-[#e0e0e0] font-sans selection:bg-red-600 selection:text-white relative w-full overflow-x-clip">
+      {/* Fullscreen Video Preloader Overlay */}
+      {!isPreloaderComplete && (
+        <VideoPreloader 
+          onFadeStart={() => setStartHomeAnimations(true)}
+          onComplete={() => setIsPreloaderComplete(true)}
+        />
+      )}
+
       {/* Navigation Header */}
       <Navbar 
         isMenuOpen={isMenuOpen} 
         setIsMenuOpen={setIsMenuOpen} 
         onOpenResume={handleOpenResume} 
         onNavClick={handleGlobalNavClick}
+        startEntrance={startHomeAnimations}
       />
 
       {/* Main Content Sections */}
       <main className="relative w-full overflow-x-clip">
         {/* 1. Hero / Header (Sticky pinned at top of viewport) */}
-        <Hero isMenuOpen={isMenuOpen} />
+        <Hero isMenuOpen={isMenuOpen} startEntrance={startHomeAnimations} />
 
         {/* Subsequent Sections (relative z-10, slides cleanly over top of the sticky Hero) */}
         <div className="relative z-10 bg-[#131313] w-full overflow-x-clip">

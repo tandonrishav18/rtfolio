@@ -7,6 +7,7 @@ interface NavbarProps {
   setIsMenuOpen?: React.Dispatch<React.SetStateAction<boolean>> | ((val: boolean | ((prev: boolean) => boolean)) => void);
   onNavClick?: (href: string) => void;
   isStatic?: boolean;
+  startEntrance?: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -14,6 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   setIsMenuOpen: controlledSetIsMenuOpen,
   onNavClick,
   isStatic = false,
+  startEntrance = true,
 }) => {
   // State: starts as compact closed capsule (or expanded if isStatic)
   const [isExpanded, setIsExpanded] = useState(isStatic);
@@ -23,14 +25,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   const isMenuOpen = controlledIsMenuOpen !== undefined ? controlledIsMenuOpen : internalMenuOpen;
   const setIsMenuOpen = controlledSetIsMenuOpen || setInternalMenuOpen;
 
-  // Dynamic Island load animation: holds compact pill for 1.5s, then smoothly opens up
+  // Dynamic Island load animation: holds compact pill for 1.5s after entrance triggers, then smoothly opens up
   useEffect(() => {
-    if (isStatic) return;
+    if (isStatic || !startEntrance) return;
     const timer = setTimeout(() => {
       setIsExpanded(true);
     }, 1500);
     return () => clearTimeout(timer);
-  }, [isStatic]);
+  }, [isStatic, startEntrance]);
 
   // Detect when Contact section is in the viewport to switch navbar color
   useEffect(() => {
@@ -119,7 +121,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           className={`pointer-events-auto text-white rounded-[26px] overflow-hidden shadow-none cursor-pointer ${
             isInContactSection ? 'bg-[#b91c1c]' : 'bg-[#000000]'
           }`}
-          title="Click space to toggle size"
         >
           {/* Dynamic Island Main Bar */}
           <div 

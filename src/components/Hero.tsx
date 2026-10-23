@@ -4,9 +4,10 @@ import { PERSONAL_INFO } from '../data';
 
 interface HeroProps {
   isMenuOpen?: boolean;
+  startEntrance?: boolean;
 }
 
-export const Hero: React.FC<HeroProps> = ({ isMenuOpen = false }) => {
+export const Hero: React.FC<HeroProps> = ({ isMenuOpen = false, startEntrance = true }) => {
   const [vh, setVh] = useState(typeof window !== 'undefined' ? window.innerHeight : 900);
 
   useEffect(() => {
@@ -53,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({ isMenuOpen = false }) => {
           <motion.h1 
             id="hero-name"
             initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={startEntrance ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
             className="w-full font-jersey font-normal text-[52px] sm:text-[84px] md:text-[108px] lg:text-[128px] text-white uppercase leading-none tracking-[8px] sm:tracking-[16px] lg:tracking-[26px] flex items-center justify-center text-center pl-[8px] sm:pl-[16px] lg:pl-[26px]"
           >
@@ -73,7 +74,7 @@ export const Hero: React.FC<HeroProps> = ({ isMenuOpen = false }) => {
           >
             <motion.div
               initial={{ opacity: 0, scaleX: 0 }}
-              animate={{ opacity: 1, scaleX: 1 }}
+              animate={startEntrance ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
               transition={{ 
                 duration: 2.4, 
                 ease: [0.16, 1, 0.3, 1], 
@@ -84,7 +85,7 @@ export const Hero: React.FC<HeroProps> = ({ isMenuOpen = false }) => {
               <motion.h2 
                 id="hero-subtitle"
                 initial={{ letterSpacing: '0px' }}
-                animate={{ letterSpacing: '12.8px' }}
+                animate={startEntrance ? { letterSpacing: '12.8px' } : { letterSpacing: '0px' }}
                 transition={{ 
                   duration: 2.4, 
                   ease: [0.16, 1, 0.3, 1], 
