@@ -98,8 +98,7 @@ export const VideoPreloader: React.FC<VideoPreloaderProps> = ({ onFadeStart, onC
         onError={finishPreloader}
         className="w-full h-full object-contain bg-black pointer-events-none"
       >
-        <source src="/intro.mp4" type="video/mp4" />
-        <source src="/PRELOADER.mp4" type="video/mp4" />
+        <source src="/preload.mp4" type="video/mp4" />
       </video>
 
       {/* Sound Toggle Text in Bottom-Right Corner: 'click to mute' when sound on, 'click to unmute' when muted */}
