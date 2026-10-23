@@ -49,9 +49,10 @@ export const ExperienceModal: React.FC<{ item: ExperienceItem | null; onClose: (
 
   const isAicte = item.id === 'aicte-ibm';
   const isBluestock = item.id === 'bluestock';
-  const imageWidth = isAicte ? 348 : (isBluestock ? 686 : 600);
-  const imageHeight = isAicte ? 330 : (isBluestock ? 485 : 420);
-  const imgSrc = item.imageUrl || (isAicte ? '/work-exp-aicte.png' : (isBluestock ? '/work-exp-bluestock.png' : undefined));
+  const isHcl = item.id === 'hcl-tech';
+  const imageWidth = isAicte ? 348 : (isBluestock ? 686 : (isHcl ? 1024 : 600));
+  const imageHeight = isAicte ? 330 : (isBluestock ? 485 : (isHcl ? 949 : 420));
+  const imgSrc = item.imageUrl || (isAicte ? '/work-exp-aicte.png' : (isBluestock ? '/work-exp-bluestock.png' : (isHcl ? '/work-exp-hcl.png' : undefined)));
 
   return (
     <BaseModal isOpen={!!item} onClose={onClose} title={item.company}>

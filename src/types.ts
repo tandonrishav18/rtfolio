@@ -21,8 +21,7 @@ export interface ExperienceItem {
   certificateIssuer: string;
   certificateDate: string;
   certificateId: string;
-  skills: string[];
-  certificateType: 'bluestock' | 'ibm_edunet';
+  certificateType?: 'bluestock' | 'ibm_edunet' | 'hcltech' | string;
   logoUrl?: string;
   imageUrl?: string;
   certificatePdf?: string;
