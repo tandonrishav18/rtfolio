@@ -115,42 +115,152 @@ export const LilyStudioWebpage: React.FC<LilyStudioWebpageProps> = ({
   onOpenResume,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
   const reel2Ref = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const userManuallyMutedRef = useRef(false);
+
+  // Audio handlers: mute, unmute, and screen click restore
+  const muteVideo = () => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.volume = 0;
+    }
+    setIsMuted(true);
+    userManuallyMutedRef.current = true;
+  };
+
+  const unmuteVideo = () => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = false;
+      video.volume = 1.0;
+      if (video.paused) {
+        video.play().catch(() => {});
+      }
+    }
+    setIsMuted(false);
+    userManuallyMutedRef.current = false;
+  };
+
+  const handleToggleSound = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (isMuted) {
+      unmuteVideo();
+    } else {
+      muteVideo();
+    }
+  };
+
+  // When clicked anywhere on screen while muted, bring volume & 'click to mute' back
+  const handleScreenClick = () => {
+    if (isMuted) {
+      unmuteVideo();
+    }
+  };
 
   useEffect(() => {
-    if (isOpen) {
-      if (containerRef.current) {
-        containerRef.current.scrollTop = 0;
-      }
-      if (videoRef.current) {
-        videoRef.current.play().catch(() => {});
-      }
-      if (reel2Ref.current) {
-        reel2Ref.current.play().catch(() => {});
-      }
-      document.body.style.overflow = 'hidden';
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') onClose();
-      };
-      window.addEventListener('keydown', handleKeyDown);
-      return () => {
-        window.removeEventListener('keydown', handleKeyDown);
-        document.body.style.overflow = 'unset';
-      };
-    } else {
+    if (!isOpen) {
       if (videoRef.current) {
         videoRef.current.pause();
         videoRef.current.currentTime = 0;
+        videoRef.current.muted = true;
       }
       if (reel2Ref.current) {
         reel2Ref.current.pause();
         reel2Ref.current.currentTime = 0;
       }
       setIsMenuOpen(false);
+      // Reset mute state so next time LILY Studio is opened from portfolio, it starts fresh with sound on
+      setIsMuted(false);
+      userManuallyMutedRef.current = false;
       document.body.style.overflow = 'unset';
+      return;
     }
+
+    // When opened fresh from main portfolio
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+    document.body.style.overflow = 'hidden';
+
+    // Start video from beginning with volume ON and 'click to mute' text visible
+    setIsMuted(false);
+    userManuallyMutedRef.current = false;
+    const video = videoRef.current;
+    if (video) {
+      video.currentTime = 0;
+      video.muted = false;
+      video.volume = 1.0;
+      video.play().catch(() => {
+        // Fallback if browser requires interaction
+        video.muted = true;
+        setIsMuted(true);
+        video.play().catch(() => {});
+      });
+    }
+
+    if (reel2Ref.current) {
+      reel2Ref.current.play().catch(() => {});
+    }
+
+    // Ensure audio un-mutes on first interaction if blocked by initial browser policy
+    const handleFirstInteraction = () => {
+      const v = videoRef.current;
+      if (v && v.muted && !userManuallyMutedRef.current) {
+        v.muted = false;
+        v.volume = 1.0;
+        setIsMuted(false);
+        v.play().catch(() => {});
+      }
+    };
+    window.addEventListener('click', handleFirstInteraction, { once: true });
+
+    // IntersectionObserver: when in view, volume is ON and plays (unless user muted); when scrolled out of view, pause
+    let observer: IntersectionObserver | null = null;
+    if (videoContainerRef.current && containerRef.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const v = videoRef.current;
+            if (!v) return;
+            if (entry.isIntersecting) {
+              if (!userManuallyMutedRef.current) {
+                v.muted = false;
+                v.volume = 1.0;
+                setIsMuted(false);
+              } else {
+                v.muted = true;
+                v.volume = 0;
+              }
+              v.play().catch(() => {});
+            } else {
+              v.pause();
+            }
+          });
+        },
+        {
+          root: containerRef.current,
+          threshold: 0.15,
+        }
+      );
+      observer.observe(videoContainerRef.current);
+    }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      if (observer) observer.disconnect();
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
   }, [isOpen, onClose]);
 
   const handleNavClick = (href: string) => {
@@ -163,6 +273,7 @@ export const LilyStudioWebpage: React.FC<LilyStudioWebpageProps> = ({
   return (
     <div
       ref={containerRef}
+      onClick={handleScreenClick}
       style={{
         opacity: isOpen ? 1 : 0,
         visibility: isOpen ? 'visible' : 'hidden',
@@ -209,30 +320,53 @@ export const LilyStudioWebpage: React.FC<LilyStudioWebpageProps> = ({
 
           {/* LILY Studio Reel Video Overlay (Replacing VIDEOOOOO) */}
           <div
+            ref={videoContainerRef}
+            onClick={handleToggleSound}
             style={{
               left: '7.8125%',
               top: '7.0661%',
               width: '84.375%',
               height: '11.4463%',
             }}
-            className="absolute z-10 overflow-hidden bg-black flex items-center justify-center pointer-events-none select-none"
+            className="group absolute z-10 overflow-hidden bg-black flex items-center justify-center select-none cursor-pointer"
           >
             <video
               ref={videoRef}
               src="/reel1.mp4"
-              muted
+              muted={isMuted}
               loop
               playsInline
               preload="auto"
               onCanPlay={(e) => {
                 if (isOpen) {
+                  e.currentTarget.muted = userManuallyMutedRef.current;
+                  if (!userManuallyMutedRef.current) {
+                    e.currentTarget.volume = 1.0;
+                  }
                   e.currentTarget.play().catch(() => {});
                 }
               }}
               disablePictureInPicture
               controls={false}
-              className="w-full h-full object-cover block"
+              className="w-full h-full object-cover block pointer-events-none"
             />
+
+            {/* 'click to mute' text in same style as preloader (Caveat, red #c01e1e) - disappears when muted */}
+            {!isMuted && (
+              <div
+                id="lily-sound-toggle"
+                onClick={handleToggleSound}
+                className="absolute z-30 font-caveat font-normal text-[#c01e1e] text-[15px] sm:text-[17px] tracking-wide cursor-pointer select-none hover:brightness-125 transition-opacity duration-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
+                style={{
+                  fontFamily: '"Caveat", cursive',
+                  fontWeight: 400,
+                  right: '2.4%',
+                  bottom: '2.5%',
+                }}
+              >
+                click to mute
+              </div>
+            )}
           </div>
 
           {/* Interactive Button 1: VIEW OUR SOCIAL PRESENCE */}
