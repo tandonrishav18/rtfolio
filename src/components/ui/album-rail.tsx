@@ -163,7 +163,7 @@ export const AlbumRail: React.FC<AlbumRailProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handlePrev, handleNext]);
 
-  // Smooth, responsive wheel scrolling strictly over the cards stack; normal page scroll everywhere else
+  // Dedicated wheel scrolling: scrolls cards in this area, but allows normal webpage up/down scroll at both ends
   useEffect(() => {
     const el = stageRef.current;
     if (!el) return;
@@ -173,36 +173,39 @@ export const AlbumRail: React.FC<AlbumRailProps> = ({
     let lastEventTime = 0;
 
     const onWheel = (e: WheelEvent) => {
-      const targetEl = e.target as HTMLElement | null;
-      if (!targetEl || !targetEl.closest('[data-album-card="true"]')) {
-        return;
-      }
-
       const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-      const delta = isHorizontal ? e.deltaX : e.deltaY;
-      if (Math.abs(delta) < 1.5) return;
+      let delta = isHorizontal ? e.deltaX : e.deltaY;
+      if (e.deltaMode === 1) delta *= 24;
+      else if (e.deltaMode === 2) delta *= 300;
+
+      if (Math.abs(delta) < 1) return;
 
       const cur = activeIndexRef.current;
       const canStepNext = delta > 0 && (loop || cur < total - 1);
       const canStepPrev = delta < 0 && (loop || cur > 0);
 
-      // Let normal portfolio scroll pass through at the ends of the card stack
+      // When reaching both ends (first box scrolled up, or last box scrolled down),
+      // allow normal webpage up/down scroll to activate
       if (!isHorizontal && !canStepNext && !canStepPrev) {
+        accumulatedDelta = 0;
         return;
       }
 
-      // Prevent window page scrolling only while stepping among the cards
+      // Prevent webpage scrolling while navigating among the cards
       e.preventDefault();
 
       const now = performance.now();
-      if (now - lastEventTime > 140) {
+      if (now - lastEventTime > 160) {
         accumulatedDelta = 0;
       }
       lastEventTime = now;
       accumulatedDelta += delta;
 
       // Responsive threshold & balanced cooldown for silky continuous stepping
-      if (Math.abs(accumulatedDelta) >= 36 && now - lastStepTime >= 165) {
+      const threshold = 24;
+      const cooldown = 130;
+
+      if (Math.abs(accumulatedDelta) >= threshold && now - lastStepTime >= cooldown) {
         if (accumulatedDelta > 0) {
           handleNext();
         } else {
