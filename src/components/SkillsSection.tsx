@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { SKILLS_LIST } from '../data';
+import { WhoAmIWithoutYouSection } from './WhoAmIWithoutYouSection';
 
 export const SkillsSection: React.FC = () => {
   // Determine custom pill/circle dimensions tailored to skill name length for balanced layout across 1216px container
@@ -75,6 +76,9 @@ export const SkillsSection: React.FC = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* WHO AM I WITHOUT YOU? Section */}
+        <WhoAmIWithoutYouSection />
       </div>
     </section>
   );
