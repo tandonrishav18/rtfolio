@@ -22,5 +22,10 @@
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "exclude": [
+    "_archive_ignore",
+    "node_modules",
+    "dist"
+  ]
 }

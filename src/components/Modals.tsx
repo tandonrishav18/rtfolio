@@ -71,7 +71,7 @@ export const ExperienceModal: React.FC<{ item: ExperienceItem | null; onClose: (
             />
           </div>
         ) : (
-          <CertificateGraphic type={item.certificateType} isModal={true} />
+          <CertificateGraphic type={item.certificateType as any} isModal={true} />
         )}
 
         <div className="space-y-3 pt-2">

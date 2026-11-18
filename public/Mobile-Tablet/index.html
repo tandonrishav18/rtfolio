@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f3e9">
+  <meta name="description" content="Portfolio of Rishav Tandon — Computer Science Engineer, AI/ML Developer & Full Stack Software Engineer.">
+  <title>.rt — Rishav Tandon | Portfolio</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Ensure every reload / refresh starts at top from scratch across phone, tab, and desktop -->
+  <script>
+    document.documentElement.classList.add("js-enabled");
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    window.scrollTo(0, 0);
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Reusable minimalist SVG icon symbol (zero duplicated path data) -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <symbol id="icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter">
+      <path d="M4.5 11.5L11.5 4.5M5.5 4.5H11.5V10.5"/>
+    </symbol>
+  </svg>
+
+  <!-- ======================================================================
+       NAVIGATION BAR
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="#hero" aria-label="Rishav Tandon Home">.rt</a>
+
+      <button
+        id="nav-toggle"
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >Menu</button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#work">Work</a></li>
+          <li><a class="nav-link" href="#projects">Projects</a></li>
+          <li><a class="nav-link" href="#more">More</a></li>
+          <li><a class="nav-link" href="#skills">Skills</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ====================================================================
+         HERO
+         ==================================================================== -->
+    <section id="hero" class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-shell">
+        <h1 id="hero-heading" class="hero-title">RISHAV TANDON<span class="hero-stop">.</span></h1>
+        <p class="hero-role"><em class="serif-accent role-italic">Computer Science Engineer</em></p>
+
+        <label class="hero-prompt serif-accent" for="hero-note-input">
+          <span aria-hidden="true">{{&nbsp;</span><span class="prompt-prefix" aria-hidden="true">hello.....</span><span class="prompt-field" data-value=""><input id="hero-note-input" class="prompt-input" type="text" size="1" maxlength="20" aria-label="Interactive greeting field: hello" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="done"></span><span class="prompt-caret" aria-hidden="true">|</span><span aria-hidden="true">&nbsp;}}</span>
+        </label>
+
+        <p class="hero-quote stacked-quote serif-accent" aria-label="Just a Developer curious enough to Build anything!!">
+          <span class="quote-line" aria-hidden="true">Just a</span>
+          <span class="quote-line quote-accent" aria-hidden="true">Developer</span>
+          <span class="quote-line" aria-hidden="true">curious enough</span>
+          <span class="quote-line" aria-hidden="true">to <span class="quote-accent">Build</span></span>
+          <span class="quote-line" aria-hidden="true">anything</span>
+          <span class="quote-line quote-accent" aria-hidden="true">!!</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         ABOUT ME
+         ==================================================================== -->
+    <section id="about" class="ruled-section" aria-labelledby="about-heading">
+      <div class="container section-grid">
+        <h2 id="about-heading" class="section-heading">About <br><em class="serif-accent">ME.</em></h2>
+
+        <div class="section-body about-grid">
+          <dl class="about-facts" aria-label="Academic background">
+            <div class="fact-item fact-college">
+              <dt>College</dt>
+              <dd>SRMIST</dd>
+            </div>
+            <div class="fact-item fact-grad">
+              <dt>Graduation Year</dt>
+              <dd><span class="fact-grad-start">2023-</span>2027</dd>
+            </div>
+            <div class="fact-item fact-cgpa">
+              <dt>CGPA</dt>
+              <dd>9.16</dd>
+            </div>
+            <div class="fact-item fact-xii">
+              <dt>Class XII</dt>
+              <dd>81.2%</dd>
+            </div>
+            <div class="fact-item fact-x">
+              <dt>Class X</dt>
+              <dd>91.2%</dd>
+            </div>
+          </dl>
+
+          <p class="about-quote stacked-quote serif-accent" aria-label="I’m most myself when I’m BUILDING.">
+            <span aria-hidden="true">I’m most</span>
+            <span aria-hidden="true">myself</span>
+            <span aria-hidden="true">when</span>
+            <span aria-hidden="true">I’m</span>
+            <span class="quote-accent" aria-hidden="true">BUILDING.</span>
+          </p>
+
+          <p class="about-bio">As a Computer Science undergraduate focused on building software that’s not just functional, but intelligent, I develop full-stack applications with a design-first mindset, engineer AI and machine learning solutions, and work with data to uncover meaningful insights.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         EXPERIENCE WORK
+         ==================================================================== -->
+    <section id="work" class="ruled-section" aria-labelledby="work-heading">
+      <div class="container section-grid">
+        <h2 id="work-heading" class="section-heading">Experience <br><em class="serif-accent">WORK.</em></h2>
+
+        <div class="section-body">
+          <ol class="experience-list">
+            <li class="experience-item">
+              <div class="experience-header">
+                <div>
+                  <h3 class="experience-role">
+                    <a
+                      class="role-cert-link"
+                      href="https://drive.google.com/file/d/1Ds4AjTypl6VkI7EMRFDjkcV1i1T9TVpd/view?usp=drivesdk"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="HCL Tech — Cloud Data Engineering Intern completion certificate"
+                    >HCL Tech — Cloud Data Engineering <span class="role-tail">Intern<svg class="inline-icon role-arrow" aria-hidden="true"><use href="#icon-arrow"/></svg></span></a>
+                  </h3>
+                  <p class="experience-org">· Internship · Remote</p>
+                </div>
+                <p class="experience-duration">July 2026 — Sep 2026</p>
+              </div>
+              <ul class="experience-bullets">
+                <li>Worked on an Azure cloud infrastructure project for a healthcare client, focusing on cloud migration, resource monitoring, troubleshooting, and technical documentation.</li>
+                <li>Contributed to infrastructure planning and Azure resource validation workflows.</li>
+                <li>Learned how enterprise cloud infrastructure is managed in real-world business environments and how teams collaborate to keep systems reliable.</li>
+              </ul>
+            </li>
+
+            <li class="experience-item">
+              <div class="experience-header">
+                <div>
+                  <h3 class="experience-role">
+                    <a
+                      class="role-cert-link"
+                      href="https://drive.google.com/file/d/14CUwHugBSoy_LhmAUJW8EbYDyKkU4FHn/view?usp=drivesdk"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Bluestock Fintech — Data Analyst Intern completion certificate"
+                    >Bluestock Fintech — Data Analyst <span class="role-tail">Intern<svg class="inline-icon role-arrow" aria-hidden="true"><use href="#icon-arrow"/></svg></span></a>
+                  </h3>
+                  <p class="experience-org">· Internship · Remote</p>
+                </div>
+                <p class="experience-duration">Apr 2026 — Jun 2026</p>
+              </div>
+              <ul class="experience-bullets">
+                <li>Performed data cleaning, preprocessing, and exploratory data analysis (EDA) across financial datasets.</li>
+                <li>Built visualizations and analyzed trends and patterns to uncover actionable insights.</li>
+                <li>Prepared analytical reports supporting business intelligence and data-driven decision-making.</li>
+              </ul>
+            </li>
+
+            <li class="experience-item">
+              <div class="experience-header">
+                <div>
+                  <h3 class="experience-role">
+                    <a
+                      class="role-cert-link"
+                      href="https://drive.google.com/file/d/17Fsn_Whawe5Dk1RjDP_iS4Y2O4TESnMk/view?usp=drivesdk"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="AICTE IBM SkillsBuild — AI/ML Intern completion certificate"
+                    >AICTE IBM SkillsBuild — AI/ML <span class="role-tail">Intern<svg class="inline-icon role-arrow" aria-hidden="true"><use href="#icon-arrow"/></svg></span></a>
+                  </h3>
+                  <p class="experience-org">· Internship · Remote</p>
+                </div>
+                <p class="experience-duration">Jan 2026 — Feb 2026</p>
+              </div>
+              <ul class="experience-bullets">
+                <li>Completed an Artificial Intelligence and Machine Learning internship in collaboration with AICTE and IBM SkillsBuild.</li>
+                <li>Developed an ML model using Convolutional Neural Networks (CNN) and worked extensively on model evaluation.</li>
+                <li>Gained practical experience in data preprocessing, machine learning algorithms, and applying AI workflows to real enterprise use cases.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PROJECTS I'M PROUD OF
+         ==================================================================== -->
+    <section id="projects" class="ruled-section" aria-labelledby="projects-heading">
+      <div class="container section-grid">
+        <h2 id="projects-heading" class="section-heading">PROJECTS <br><em class="serif-accent">I’m Proud of.</em></h2>
+
+        <div class="section-body">
+          <div class="projects-grid">
+            <article class="project-item">
+              <div>
+                <div class="project-meta">
+                  <span class="project-index">01</span>
+                </div>
+                <h3 class="project-title">NIVALA</h3>
+                <p class="project-expanded">Leftover Food Management System</p>
+                <p class="project-desc">A community-driven surplus food redistribution ecosystem bridging restaurants and individual donors with NGOs and delivery volunteers to cut food waste and support underserved communities—designed around clear role-based journeys and aligned with UN SDGs 2, 12, and 17.</p>
+                <ul class="tech-list" aria-label="Technologies used">
+                  <li class="tech-item">Java</li>
+                  <li class="tech-item">JDBC</li>
+                  <li class="tech-item">MySQL</li>
+                  <li class="tech-item">Spring Boot</li>
+                  <li class="tech-item">React</li>
+                </ul>
+              </div>
+              <div class="project-links">
+                <a class="text-link" href="https://github.com/tandonrishav18" target="_blank" rel="noopener noreferrer">
+                  <span>GitHub</span>
+                  <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div>
+                <div class="project-meta">
+                  <span class="project-index">02</span>
+                </div>
+                <h3 class="project-title">BE+</h3>
+                <p class="project-expanded">Blood Group Detection Using Fingerprints</p>
+                <p class="project-desc">A non-invasive biometric deep learning system analyzing fingerprint ridge patterns to classify all eight ABO/Rh blood groups without a needle—evaluating AlexNet, LeNet, ResNet, and VGG CNN architectures to reach 96.8% training accuracy and 94.5% validation accuracy.</p>
+                <ul class="tech-list" aria-label="Technologies used">
+                  <li class="tech-item">PyTorch</li>
+                  <li class="tech-item">OpenCV</li>
+                  <li class="tech-item">CNN</li>
+                  <li class="tech-item">Scikit-learn</li>
+                  <li class="tech-item">Flask</li>
+                  <li class="tech-item">React</li>
+                </ul>
+              </div>
+              <div class="project-links">
+                <a class="text-link" href="https://github.com/tandonrishav18/Be-" target="_blank" rel="noopener noreferrer">
+                  <span>GitHub</span>
+                  <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+                </a>
+                <a class="text-link" href="https://be-plus-frontend.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <span>Live Project</span>
+                  <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div>
+                <div class="project-meta">
+                  <span class="project-index">03</span>
+                </div>
+                <h3 class="project-title">CineSuggest</h3>
+                <p class="project-expanded">Movie Review and Recommendation Platform</p>
+                <p class="project-desc">A full-stack movie discovery and review platform powered by Java Spring Boot REST APIs and MySQL, combining TF-IDF cosine similarity content filtering with item-based collaborative filtering, 0.5-star ratings, personal CineList watchlists, and Trending Now exploration.</p>
+                <ul class="tech-list" aria-label="Technologies used">
+                  <li class="tech-item">Java</li>
+                  <li class="tech-item">Spring Boot</li>
+                  <li class="tech-item">MySQL</li>
+                  <li class="tech-item">REST APIs</li>
+                  <li class="tech-item">JavaScript</li>
+                </ul>
+              </div>
+              <div class="project-links">
+                <a class="text-link" href="https://github.com/tandonrishav18/CineSuggest" target="_blank" rel="noopener noreferrer">
+                  <span>GitHub</span>
+                  <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+                </a>
+                <a class="text-link" href="https://cine-suggest-murex.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <span>Live Project</span>
+                  <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div>
+                <div class="project-meta">
+                  <span class="project-index">04</span>
+                </div>
+                <h3 class="project-title">CLIMORA</h3>
+                <p class="project-expanded">Spatio-Temporal Edge Intelligence Framework for Resilient Geospatial IoT-Based Climate Anomaly Detection</p>
+                <p class="project-desc">An IEEE ICIET 2026 research-backed climate monitoring system fusing multi-sensor IoT streams (temperature, humidity, rainfall, AQI) with KNN spatial correlation, temporal deviation, and Isolation Forest anomaly scoring on real-time geospatial dashboards.</p>
+                <ul class="tech-list" aria-label="Technologies used">
+                  <li class="tech-item">Python</li>
+                  <li class="tech-item">KNN &amp; SVM</li>
+                  <li class="tech-item">Isolation Forest</li>
+                  <li class="tech-item">FastAPI</li>
+                  <li class="tech-item">React</li>
+                </ul>
+              </div>
+              <div class="project-links">
+                <a class="text-link" href="https://github.com/tandonrishav18/CLIMORA" target="_blank" rel="noopener noreferrer">
+                  <span>GitHub</span>
+                  <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+                </a>
+                <a class="text-link" href="https://climora-two.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <span>Live Project</span>
+                  <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-item project-featured">
+              <div>
+                <div class="project-meta">
+                  <span class="project-index">05</span>
+                </div>
+                <h3 class="project-title serif-accent">Already Bored?</h3>
+              </div>
+              <div class="project-links">
+                <a class="text-link featured-link" href="https://cube-alpha-black.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <span>Beyond the code!</span>
+                  <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         WHAT I BRING (MORE)
+         ==================================================================== -->
+    <section id="more" class="ruled-section" aria-labelledby="more-heading">
+      <div class="container section-grid">
+        <h2 id="more-heading" class="section-heading">WHAT I <br><em class="serif-accent">BRING.</em></h2>
+
+        <div class="section-body">
+          <div class="bring-grid">
+            <article class="bring-item">
+              <h3 class="bring-title">INTELLIGENT ENGINEERING</h3>
+              <p class="bring-desc">AI, ML, DL, and computer vision — building intelligent systems where data becomes insight, models become decisions, and technology creates impact.</p>
+            </article>
+
+            <article class="bring-item">
+              <h3 class="bring-title">THE STACK</h3>
+              <p class="bring-desc">Design-led development across the stack, creating thoughtful interfaces, building powerful backends, and connecting experiences through clean, reliable APIs.</p>
+            </article>
+
+            <article class="bring-item">
+              <h3 class="bring-title">DECODE DATA</h3>
+              <p class="bring-desc">Turning raw data into meaningful insights — from preprocessing and exploratory analysis to visualization and machine learning, using data to uncover patterns, answer questions, and drive smarter decisions.</p>
+            </article>
+
+            <article class="bring-item">
+              <h3 class="bring-title">LILY STUDIO</h3>
+              <p class="bring-sub">Founder — LILY Studio, a design x development studio.</p>
+              <div class="bring-action">
+                <a class="text-link" href="https://lily-studio-delta.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <span>Open LILY Studio</span>
+                  <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CERTIFICATIONS & CERTIFICATES
+         ==================================================================== -->
+    <section id="certifications" class="ruled-section" aria-labelledby="certifications-heading">
+      <div class="container section-grid">
+        <h2 id="certifications-heading" class="section-heading">CERTIFICATIONS <br><em class="serif-accent">&amp; certificates.</em></h2>
+
+        <div class="section-body">
+          <ul class="cert-list">
+            <li class="cert-item">
+              <h3 class="cert-title">SAP Certified - Back-End Developer - ABAP Cloud</h3>
+              <span class="cert-year">Apr 2026 — Apr 2027</span>
+              <a class="text-link cert-action" href="https://drive.google.com/file/d/1RaLseQ9v0dIaPcc5cMBB5jt2wxd17e1z/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+                <span>Open</span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+
+            <li class="cert-item">
+              <h3 class="cert-title">Data Science Fundamentals</h3>
+              <span class="cert-year">Mar 2026</span>
+              <a class="text-link cert-action" href="https://drive.google.com/file/d/1rzOwEqYicnPvP6TZ76Io7wZ9Q3Vrl_fU/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+                <span>Open</span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+
+            <li class="cert-item">
+              <h3 class="cert-title">Artificial Intelligence Fundamentals</h3>
+              <span class="cert-year">Feb 2026</span>
+              <a class="text-link cert-action" href="https://www.credly.com/badges/a082c94e-e07f-4a7b-9d42-5db9a1345c4d" target="_blank" rel="noopener noreferrer">
+                <span>Open</span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+
+            <li class="cert-item">
+              <h3 class="cert-title">Networking Basics</h3>
+              <span class="cert-year">Nov 2025</span>
+              <a class="text-link cert-action" href="https://drive.google.com/file/d/1xUjqF4Pv0g_fkQqqrHPtJIbp3LVc5KE2/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+                <span>Open</span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+
+            <li class="cert-item">
+              <h3 class="cert-title">Introduction to Machine Learning</h3>
+              <span class="cert-year">Sep 2025</span>
+              <a class="text-link cert-action" href="https://archive.nptel.ac.in/content/noc/NOC25/SEM2/Ecertificates/106/noc25-cs149/Course/NPTEL25CS149S13320035909186429.pdf" target="_blank" rel="noopener noreferrer">
+                <span>Open</span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+
+            <li class="cert-item">
+              <h3 class="cert-title">Data Analytics Job Simulation</h3>
+              <span class="cert-year">Jul 2025</span>
+              <a class="text-link cert-action" href="https://drive.google.com/file/d/17HB3hJRJoYXFBmFwJrokshqapnqstqCD/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+                <span>Open</span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+
+            <li class="cert-item">
+              <h3 class="cert-title">DBMS - Master the Fundamentals and Advanced Concepts</h3>
+              <span class="cert-year">May 2025</span>
+              <a class="text-link cert-action" href="https://drive.google.com/file/d/1phCC8RVv7QJudK6ywpK2R97_QJ_93La2/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+                <span>Open</span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+
+            <li class="cert-item">
+              <h3 class="cert-title">C Programming for Beginners - Master the C Language</h3>
+              <span class="cert-year">Nov 2023</span>
+              <a class="text-link cert-action" href="https://www.udemy.com/certificate/UC-3e814510-ddd3-4049-9c39-c39d489b0e2c/" target="_blank" rel="noopener noreferrer">
+                <span>Open</span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BEFORE YOU ASK (SKILLS)
+         ==================================================================== -->
+    <section id="skills" class="ruled-section" aria-labelledby="skills-heading">
+      <div class="container section-grid">
+        <h2 id="skills-heading" class="section-heading">BEFORE YOU <br><em class="serif-accent">ASK.</em></h2>
+
+        <div class="section-body">
+          <div class="skills-grid">
+            <div class="skill-group">
+              <h3 class="skill-category">Programming Languages</h3>
+              <ul class="skill-items">
+                <li class="skill-label">Python</li>
+                <li class="skill-label">C</li>
+                <li class="skill-label">C++</li>
+                <li class="skill-label">Java</li>
+                <li class="skill-label">JavaScript</li>
+                <li class="skill-label">TypeScript</li>
+                <li class="skill-label">HTML</li>
+                <li class="skill-label">CSS</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="skill-category">Languages and Frameworks</h3>
+              <ul class="skill-items">
+                <li class="skill-label">React.js</li>
+                <li class="skill-label">Next.js</li>
+                <li class="skill-label">Node.js</li>
+                <li class="skill-label">Express.js</li>
+                <li class="skill-label">Spring Boot</li>
+                <li class="skill-label">FastAPI</li>
+                <li class="skill-label">Flask</li>
+                <li class="skill-label">Django</li>
+                <li class="skill-label">Flutter</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="skill-category">Tools and Technologies</h3>
+              <ul class="skill-items">
+                <li class="skill-label">MySQL</li>
+                <li class="skill-label">OpenCV</li>
+                <li class="skill-label">PyTorch</li>
+                <li class="skill-label">NumPy</li>
+                <li class="skill-label">Pandas</li>
+                <li class="skill-label">Matplotlib</li>
+                <li class="skill-label">Git</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="skill-category">Design and Simulation Tools</h3>
+              <ul class="skill-items">
+                <li class="skill-label">Figma</li>
+                <li class="skill-label">Framer</li>
+                <li class="skill-label">Canva</li>
+                <li class="skill-label">Web Design</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="skill-category">Domain Knowledge</h3>
+              <ul class="skill-items">
+                <li class="skill-label">DSA</li>
+                <li class="skill-label">AI</li>
+                <li class="skill-label">ML</li>
+                <li class="skill-label">DL</li>
+                <li class="skill-label">NLP</li>
+                <li class="skill-label">Data Science</li>
+                <li class="skill-label">IoT</li>
+                <li class="skill-label">AIoT</li>
+                <li class="skill-label">OOP</li>
+                <li class="skill-label">DBMS</li>
+                <li class="skill-label">OS</li>
+                <li class="skill-label">Computer Networks</li>
+                <li class="skill-label">Cloud Computing</li>
+                <li class="skill-label">Web Development</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="without-you">
+            <h3 class="without-you-heading serif-accent">Who am I without you?</h3>
+            <ul class="skill-items">
+              <li class="skill-label">VS Code</li>
+              <li class="skill-label">Antigravity</li>
+              <li class="skill-label">AI Studio</li>
+              <li class="skill-label">Chat GPT</li>
+              <li class="skill-label">Claude</li>
+              <li class="skill-label">Figma</li>
+              <li class="skill-label">Canva</li>
+              <li class="skill-label">GitHub</li>
+              <li class="skill-label">Gemini</li>
+              <li class="skill-label">Flow</li>
+              <li class="skill-label">Copilot</li>
+              <li class="skill-label">Pinterest</li>
+              <li class="skill-label">Vercel</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       CONTACT FOOTER
+       ====================================================================== -->
+  <footer id="contact" class="site-footer" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="footer-brand-top" aria-hidden="true">.rt</div>
+
+      <div class="footer-grid">
+        <div>
+          <h2 id="contact-heading" class="lets-lockup" aria-label="Let's Work, Let's Create, Let's Develop, Let's Build">
+            <span class="lets-big" aria-hidden="true">Let’s</span>
+            <span class="lets-words serif-accent" aria-hidden="true">
+              <span>Work</span>
+              <span>Create</span>
+              <span>Develop</span>
+              <span>Build</span>
+            </span>
+          </h2>
+
+          <p class="footer-status">Available for work!</p>
+
+          <div class="footer-resume-wrap">
+            <a class="btn-resume" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          </div>
+
+          <div class="footer-direct">
+            <a class="footer-email" href="mailto:tandonrishav18@gmail.com">tandonrishav18@gmail.com</a>
+            <a class="footer-phone" href="tel:+916204578740">+916204578740</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-links-heading">Connect with me on</h3>
+          <ul class="footer-links">
+            <li>
+              <a class="footer-link" href="https://github.com/tandonrishav18" target="_blank" rel="noopener noreferrer">
+                <span>GitHub<span class="footer-link-detail"> — github.com/tandonrishav18</span></span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+            <li>
+              <a class="footer-link" href="https://www.linkedin.com/in/tandonrishav18" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn<span class="footer-link-detail"> — linkedin.com/in/tandonrishav18</span></span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+            <li>
+              <a class="footer-link" href="https://www.instagram.com/tandon_rishav?stkn=MWYyOHBtbmxveWV1bA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+                <span>Instagram<span class="footer-link-detail"> — @tandon_rishav</span></span>
+                <svg class="inline-icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+              </a>
+            </li>
+          </ul>
+          <p class="footer-signoff"><em class="serif-accent">Minimal yet Meaningful.</em></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Rishav Tandon. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

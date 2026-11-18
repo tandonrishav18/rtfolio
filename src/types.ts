@@ -25,6 +25,7 @@ export interface ExperienceItem {
   logoUrl?: string;
   imageUrl?: string;
   certificatePdf?: string;
+  skills?: string[];
 }
 
 export interface PublicationItem {
