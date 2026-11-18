@@ -140,7 +140,11 @@
     typeTimer = setTimeout(typeNext, 420);
   }
 
-  if (promptPrefix && !mq.matches && !reducedMotion) {
+  function triggerTypewriterWhenReady() {
+    if (prefixDone || !promptPrefix || mq.matches || reducedMotion) {
+      finishPrefix();
+      return;
+    }
     promptPrefix.textContent = "";
     if (promptLabel) promptLabel.classList.add("is-typing");
     if (document.fonts && document.fonts.ready) {
@@ -148,8 +152,26 @@
     } else {
       startTypewriter();
     }
+  }
+
+  // Expose global trigger for preloader completion
+  window.startHeroTypewriter = function () {
+    prefixDone = false;
+    triggerTypewriterWhenReady();
+  };
+
+  window.addEventListener("preloaderFinished", function () {
+    prefixDone = false;
+    triggerTypewriterWhenReady();
+  });
+
+  var preloaderOverlay = document.getElementById("mobile-preloader-overlay");
+  if (!preloaderOverlay) {
+    triggerTypewriterWhenReady();
   } else {
-    finishPrefix();
+    // Keep blank while preloader is active so user sees typewriter animate right when preloader finishes!
+    if (promptPrefix) promptPrefix.textContent = "";
+    if (promptLabel) promptLabel.classList.add("is-typing");
   }
 
   if (promptCaret && !reducedMotion) {

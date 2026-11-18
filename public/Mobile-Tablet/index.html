@@ -55,18 +55,24 @@
 
     #mobile-preloader-sound-toggle {
       position: absolute;
-      bottom: 1.5rem;
-      right: 1.5rem;
+      right: 24px;
+      bottom: 24px;
+      right: calc(24px + env(safe-area-inset-right, 0px));
+      bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+      margin: 0;
+      padding: 0;
+      line-height: 1;
       z-index: 30;
       font-family: 'Caveat', cursive, sans-serif;
       font-weight: 400;
       color: #c01e1e;
-      font-size: 16px;
+      font-size: 17px;
       letter-spacing: 0.025em;
       cursor: pointer;
       user-select: none;
       -webkit-user-select: none;
-      padding: 6px 12px;
+      text-align: right;
+      display: inline-block;
       transition: opacity 0.3s ease, filter 0.2s ease;
     }
 
@@ -77,9 +83,11 @@
 
     @media (min-width: 640px) {
       #mobile-preloader-sound-toggle {
-        bottom: 2rem;
-        right: 2rem;
-        font-size: 18px;
+        right: 32px;
+        bottom: 32px;
+        right: calc(32px + env(safe-area-inset-right, 0px));
+        bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+        font-size: 19px;
       }
     }
   </style>
@@ -182,6 +190,14 @@
         if (isDone || isFading) return;
         isFading = true;
         overlay.classList.add("fade-out");
+
+        // Trigger typewriter animation as preloader fades out and screen reveals!
+        if (typeof window.startHeroTypewriter === "function") {
+          window.startHeroTypewriter();
+        } else {
+          window.dispatchEvent(new CustomEvent("preloaderFinished"));
+        }
+
         setTimeout(function () {
           isDone = true;
           document.body.style.overflow = "";
