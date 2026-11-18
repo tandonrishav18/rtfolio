@@ -1109,7 +1109,7 @@ button {
   font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
   line-height: 1.2;
   color: var(--semantic-color-text-accent); /* #e33529 (4.81:1 AA on #000000) */
-  transform: translateY(20px);
+  transform: translateY(-12px);
 }
 
 .footer-signoff .serif-accent {
