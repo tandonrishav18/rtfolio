@@ -209,24 +209,22 @@
   }
 
   // Equalize gap between "Minimal yet Meaningful." and ending line
-  // to match the gap between phone number and "Connect with me on"
+  // to match the gap between that line and "© 2026 Rishav Tandon. All rights reserved."
   function syncFooterSignoffGap() {
-    var phone = document.querySelector(".footer-phone");
-    var heading = document.querySelector(".footer-links-heading");
-    var signoff = document.querySelector(".footer-signoff");
     var bottom = document.querySelector(".footer-bottom");
-    if (!phone || !heading || !signoff || !bottom) return;
+    var copyright = bottom ? bottom.querySelector("p") : null;
+    var signoff = document.querySelector(".footer-signoff");
+    if (!bottom || !copyright || !signoff) return;
 
     signoff.style.transform = "none";
-    var pr = phone.getBoundingClientRect();
-    var hr = heading.getBoundingClientRect();
-    var gapPhoneToConnect = hr.top - pr.bottom;
-
-    var sr = signoff.getBoundingClientRect();
     var br = bottom.getBoundingClientRect();
-    var currentGap = br.top - sr.bottom;
+    var cr = copyright.getBoundingClientRect();
+    var sr = signoff.getBoundingClientRect();
 
-    var shift = currentGap - gapPhoneToConnect;
+    var gapLineToCopyright = cr.top - br.top;
+    var naturalGapSignoffToLine = br.top - sr.bottom;
+    var shift = naturalGapSignoffToLine - gapLineToCopyright;
+
     signoff.style.transform = "translateY(" + shift + "px)";
   }
 
