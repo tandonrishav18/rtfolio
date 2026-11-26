@@ -153,3 +153,78 @@ video::-webkit-media-controls-overlay-enclosure {
   animation-play-state: paused !important;
 }
 
+/* "I Shape Things That Don't Exist" — 12-Card Blossom Gallery Typography & CTA */
+.font-editorial {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+}
+
+.text-shadow-hero {
+  text-shadow:
+    0 2px 24px rgba(0, 0, 0, 0.92),
+    0 1px 6px rgba(0, 0, 0, 0.85);
+}
+
+.gallery-cta-fill {
+  opacity: 1;
+  transition: opacity 400ms ease-out;
+}
+
+.gallery-cta-backdrop {
+  opacity: 0;
+  transition: opacity 400ms ease-out;
+}
+
+.gallery-cta-label {
+  color: #050505;
+  transition: color 400ms ease-out;
+}
+
+.gallery-cta-border-white {
+  clip-path: inset(0% 9% 0% 9%);
+  opacity: 0;
+  transition: opacity 260ms ease-out;
+}
+
+.gallery-cta-gold-top {
+  clip-path: inset(0% 9% 50% 91%);
+  transition: clip-path 300ms cubic-bezier(0.25, 0.1, 0.25, 1) 180ms;
+}
+
+.gallery-cta-gold-bottom {
+  clip-path: inset(50% 91% 0% 9%);
+  transition: clip-path 260ms cubic-bezier(0.25, 0.1, 0.25, 1) 0ms;
+}
+
+.gallery-cta:hover .gallery-cta-fill,
+.gallery-cta:focus-visible .gallery-cta-fill {
+  opacity: 0;
+}
+
+.gallery-cta:hover .gallery-cta-backdrop,
+.gallery-cta:focus-visible .gallery-cta-backdrop {
+  opacity: 1;
+}
+
+.gallery-cta:hover .gallery-cta-label,
+.gallery-cta:focus-visible .gallery-cta-label {
+  color: #ffffff;
+}
+
+.gallery-cta:hover .gallery-cta-border-white,
+.gallery-cta:focus-visible .gallery-cta-border-white {
+  opacity: 1;
+}
+
+.gallery-cta:hover .gallery-cta-gold-top,
+.gallery-cta:focus-visible .gallery-cta-gold-top {
+  clip-path: inset(0% 9% 50% 9%);
+  transition: clip-path 380ms cubic-bezier(0.25, 0.1, 0.25, 1) 0ms;
+}
+
+.gallery-cta:hover .gallery-cta-gold-bottom,
+.gallery-cta:focus-visible .gallery-cta-gold-bottom {
+  clip-path: inset(50% 9% 0% 9%);
+  transition: clip-path 450ms cubic-bezier(0.22, 1, 0.36, 1) 390ms;
+}
+
+

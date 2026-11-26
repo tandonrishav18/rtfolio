@@ -848,7 +848,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
   return (
     <section 
       id="projects" 
-      className="pt-20 md:pt-28 pb-10 sm:pb-14 md:pb-16 px-6 sm:px-10 lg:px-16 w-full bg-[#111111] border-t border-neutral-800/80 overflow-x-clip"
+      className="pt-20 md:pt-28 pb-10 sm:pb-14 md:pb-16 px-6 sm:px-10 lg:px-16 w-full bg-[#131313] border-t border-neutral-800/80 overflow-x-clip"
     >
       <div className="w-full max-w-[1360px] mx-auto flex flex-col overflow-x-clip">
         {/* Section Header matching exact typography from reference image */}
@@ -916,7 +916,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                 <img
                   src="/mockup-climera.png?v=2"
                   alt="Climora Climate Anomaly Desktop Mockup"
-                  className="h-full w-auto object-contain block select-none shadow-none drop-shadow-none filter-none bg-[#111111]"
+                  className="h-full w-auto object-contain block select-none shadow-none drop-shadow-none filter-none bg-[#131313]"
                 />
               </div>
             </div>

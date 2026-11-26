@@ -4,7 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
 import { ExperienceSection } from './components/ExperienceSection';
-import { ProjectsSection } from './components/ProjectsSection';
+import { IShapeThingsHero } from './components/IShapeThingsHero';
 import { PegboardSection } from './components/PegboardSection';
 import { SkillsSection } from './components/SkillsSection';
 import { PublicationsSection } from './components/PublicationsSection';
@@ -71,14 +71,25 @@ export default function App() {
     setIsBePlusWebpageOpen(false);
     setSelectedProject(null);
 
-    // Sequence chain: NIVALA -> CS -> BE+ -> CLIMORA -> ELIT -> ADBMS
-    if (projId === 'nivala') {
+    // Explicitly do not connect anything with rapido or i shape things (collage)
+    if (
+      projId === 'rapido' ||
+      projId === 'coride' ||
+      projId === 'artgallery' ||
+      projId === 'collage' ||
+      projId === 'ishapethings'
+    ) {
+      return;
+    }
+
+    // Connect to respective dedicated explanation webpages
+    if (projId === 'nivala' || projId === 'surplus') {
       setIsNivalaWebpageOpen(true);
-    } else if (projId === 'cine-suggest') {
+    } else if (projId === 'cine-suggest' || projId === 'cine') {
       setIsCineSuggestWebpageOpen(true);
-    } else if (projId === 'be-plus') {
+    } else if (projId === 'be-plus' || projId === 'be') {
       setIsBePlusWebpageOpen(true);
-    } else if (projId === 'climora-iot') {
+    } else if (projId === 'climora-iot' || projId === 'climora') {
       setIsClimoraWebpageOpen(true);
     } else {
       const targetProj = PROJECTS.find(p => p.id === projId) || PROJECTS[0];
@@ -176,8 +187,8 @@ export default function App() {
             onOpenCertificateImage={(img) => setCertificateViewerImage(img)}
           />
 
-          {/* 4. Projects Section */}
-          <ProjectsSection onSelectProject={handleSelectProject} />
+          {/* 4. "Projects I'm Proud Of" — 6-Card Blossom Exhibition */}
+          <IShapeThingsHero onSelectProject={openProjectById} />
 
           {/* 5. Certifications (Pegboard) Section */}
           <PegboardSection />

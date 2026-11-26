@@ -21,21 +21,21 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
     offset: ['start start', 'end end']
   });
 
-  // Gentle, smooth spring physics for slow and fluid glide between cards
+  // Gentle, smooth spring physics tuned for fluid transitions without lag
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 26,
-    damping: 34,
-    mass: 1.4,
+    stiffness: 45,
+    damping: 28,
+    mass: 1.0,
     restDelta: 0.0001
   });
 
-  // Horizontal scroll progression for 3 cards with generous resting plateaus:
-  // Card 1 (HCL Tech): Stay (0.00 -> 0.05), Slide out to left (0.05 -> 0.38)
-  // Card 2 (Bluestock): Slide in from right (0.05 -> 0.38), Stay (0.38 -> 0.52), Slide out to left (0.52 -> 0.85)
-  // Card 3 (AICTE-IBM): Slide in from right (0.52 -> 0.85), Stay (0.85 -> 1.00)
-  const card1X = useTransform(smoothProgress, [0.0, 0.05, 0.38, 1.0], ['0%', '0%', '-100%', '-100%']);
-  const card2X = useTransform(smoothProgress, [0.0, 0.05, 0.38, 0.52, 0.85, 1.0], ['100%', '100%', '0%', '0%', '-100%', '-100%']);
-  const card3X = useTransform(smoothProgress, [0.0, 0.52, 0.85, 1.0], ['100%', '100%', '0%', '0%']);
+  // Horizontal scroll progression for 3 cards with generous 2-second delay plateaus at top and bottom:
+  // Card 1 (HCL Tech): Stay 2s delay (0.00 -> 0.22), Slide out to left (0.22 -> 0.40)
+  // Card 2 (Bluestock): Slide in from right (0.22 -> 0.40), Stay (0.40 -> 0.58), Slide out to left (0.58 -> 0.76)
+  // Card 3 (AICTE-IBM): Slide in from right (0.58 -> 0.76), Stay 2s delay (0.76 -> 1.00)
+  const card1X = useTransform(smoothProgress, [0.0, 0.22, 0.40, 1.0], ['0%', '0%', '-100%', '-100%']);
+  const card2X = useTransform(smoothProgress, [0.0, 0.22, 0.40, 0.58, 0.76, 1.0], ['100%', '100%', '0%', '0%', '-100%', '-100%']);
+  const card3X = useTransform(smoothProgress, [0.0, 0.58, 0.76, 1.0], ['100%', '100%', '0%', '0%']);
 
   const exp1 = EXPERIENCES[0]; // HCL Tech
   const exp2 = EXPERIENCES[1]; // Bluestock Fintech
