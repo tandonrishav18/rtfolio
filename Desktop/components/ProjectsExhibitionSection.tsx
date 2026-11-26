@@ -81,6 +81,11 @@ export function ProjectsExhibitionSection({ onSelectProject }: ProjectsExhibitio
       if (!stage) return;
       const opacity = smootherstep((progress - fadeStart) / 0.06);
       stage.style.setProperty('--hint-opacity', String(1 - smootherstep(progress / 0.26)));
+      // On-appear animation for "PROJECTS" and "I'm proud of" text
+      const titleAppear = smootherstep(progress / 0.15);
+      const subtitleAppear = smootherstep(Math.max(0, progress - 0.04) / 0.14);
+      portfolio.style.setProperty('--title-appear', String(titleAppear));
+      portfolio.style.setProperty('--subtitle-appear', String(subtitleAppear));
       for (const { element, distance, x, y, tilt } of cards) {
         // Symmetrical 3.0s delays & calm blossom:
         // 1. Top delay buffer (0.00 -> 0.32): ~3.0s scroll delay before cards appear, only title visible

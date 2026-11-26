@@ -149,6 +149,8 @@
   color: var(--projects-red);
   font-family: Jersey, sans-serif;
   font-size: calc(88 * var(--type-unit));
+  opacity: var(--title-appear, 0);
+  transform: translateY(calc((1 - var(--title-appear, 0)) * -20px));
 }
 .portfolio .subtitle {
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -157,7 +159,9 @@
   letter-spacing: 0;
   text-transform: none;
   /* Correct for the italic glyphs extending farther on the right. */
-  transform: translateX(calc(-8 * var(--type-unit)));
+  /* Compose with on-appear translateY — subtitle-appear drives both opacity and rise */
+  opacity: var(--subtitle-appear, 0);
+  transform: translateX(calc(-8 * var(--type-unit))) translateY(calc((1 - var(--subtitle-appear, 0)) * -14px));
 }
 .portfolio figure {
   overflow: hidden;
