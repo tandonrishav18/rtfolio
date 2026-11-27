@@ -6,7 +6,7 @@ interface VideoPreloaderProps {
 }
 
 export const VideoPreloader: React.FC<VideoPreloaderProps> = ({ onFadeStart, onComplete }) => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isDone, setIsDone] = useState(false);
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -32,10 +32,34 @@ export const VideoPreloader: React.FC<VideoPreloaderProps> = ({ onFadeStart, onC
 
     const videoEl = videoRef.current;
     if (videoEl) {
-      // Start muted by default to guarantee instant autoplay in all browsers
-      videoEl.muted = true;
-      videoEl.volume = 0;
-      videoEl.play().catch(() => {});
+      // Sound on by default: attempt unmuted autoplay
+      videoEl.muted = false;
+      videoEl.volume = 1.0;
+      const playPromise = videoEl.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If browser policy prevents unmuted autoplay without prior interaction,
+          // play muted so preloader doesn't stall, and unmute on the very first touch/click
+          videoEl.muted = true;
+          videoEl.volume = 0;
+          setIsMuted(true);
+          videoEl.play().catch(() => {});
+
+          const unlockSound = () => {
+            if (hasEndedRef.current) return;
+            videoEl.muted = false;
+            videoEl.volume = 1.0;
+            setIsMuted(false);
+            ['pointerdown', 'touchstart', 'click', 'keydown'].forEach((evt) => {
+              window.removeEventListener(evt, unlockSound);
+            });
+          };
+
+          ['pointerdown', 'touchstart', 'click', 'keydown'].forEach((evt) => {
+            window.addEventListener(evt, unlockSound, { once: true, passive: true });
+          });
+        });
+      }
     }
 
     return () => {

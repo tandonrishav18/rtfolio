@@ -96,6 +96,7 @@ export function MobileTabletView() {
         id="mobile-tablet-frame"
         src={iframeSrc}
         title=".rt — Rishav Tandon | Portfolio (Mobile & Tablet)"
+        allow="autoplay; fullscreen"
         onLoad={handleIframeLoad}
         style={{
           width: '100%',
