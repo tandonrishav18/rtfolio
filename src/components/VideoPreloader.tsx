@@ -32,7 +32,8 @@ export const VideoPreloader: React.FC<VideoPreloaderProps> = ({ onFadeStart, onC
 
     const videoEl = videoRef.current;
     if (videoEl) {
-      // Start muted by default to guarantee instant autoplay in all browsers
+      // Start muted with defaultMuted to guarantee instantaneous 0ms autoplay in all engines
+      videoEl.defaultMuted = true;
       videoEl.muted = true;
       videoEl.volume = 0;
       videoEl.play().catch(() => {});
@@ -93,9 +94,23 @@ export const VideoPreloader: React.FC<VideoPreloaderProps> = ({ onFadeStart, onC
       {/* Fullscreen Video Element */}
       <video
         ref={videoRef}
+        src="/preload.mp4"
         autoPlay
         playsInline
+        preload="auto"
         muted={isMuted}
+        onCanPlay={() => {
+          const el = videoRef.current;
+          if (el && el.paused && !hasEndedRef.current) {
+            el.play().catch(() => {});
+          }
+        }}
+        onLoadedData={() => {
+          const el = videoRef.current;
+          if (el && el.paused && !hasEndedRef.current) {
+            el.play().catch(() => {});
+          }
+        }}
         onEnded={finishPreloader}
         onError={finishPreloader}
         className="w-full h-full object-contain bg-black pointer-events-none"

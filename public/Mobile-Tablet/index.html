@@ -115,6 +115,7 @@
       autoplay
       playsinline
       webkit-playsinline
+      preload="auto"
       muted
     ></video>
 
@@ -132,6 +133,11 @@
       var isMuted = true;
       var isDone = false;
       var isFading = false;
+
+      // Start muted immediately with defaultMuted to guarantee instantaneous 0ms autoplay
+      video.muted = true;
+      video.defaultMuted = true;
+      video.volume = 0;
 
       // Lock scrolling while preloader runs
       document.body.style.overflow = "hidden";
@@ -154,25 +160,16 @@
         updateToggleText();
       }
 
-      // Try autoplay with sound first
-      video.muted = false;
-      video.volume = 1.0;
-      var playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(function () {
-            isMuted = false;
-            updateToggleText();
-          })
-          .catch(function () {
-            // Autoplay policy prevented sound -> play muted and let user tap to unmute
-            isMuted = true;
-            video.muted = true;
-            video.volume = 0;
-            updateToggleText();
-            video.play().catch(finish);
-          });
+      function startPlay() {
+        if (!isDone && !isFading && video.paused) {
+          video.play().catch(function () {});
+        }
       }
+
+      // Start playing instantly with zero delay
+      startPlay();
+      video.addEventListener("canplay", startPlay, { once: true });
+      video.addEventListener("loadeddata", startPlay, { once: true });
 
       function toggleSound(e) {
         if (isFading || isDone) return;

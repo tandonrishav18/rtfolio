@@ -85,7 +85,7 @@ export function MobileTabletView() {
         width: '100vw',
         height: '100dvh',
         zIndex: 999999,
-        backgroundColor: '#f3f3e9',
+        backgroundColor: '#000000',
         overflow: 'hidden',
         margin: 0,
         padding: 0,
@@ -96,6 +96,7 @@ export function MobileTabletView() {
         id="mobile-tablet-frame"
         src={iframeSrc}
         title=".rt — Rishav Tandon | Portfolio (Mobile & Tablet)"
+        allow="autoplay; fullscreen"
         onLoad={handleIframeLoad}
         style={{
           width: '100%',
@@ -103,9 +104,8 @@ export function MobileTabletView() {
           border: 'none',
           outline: 'none',
           display: 'block',
-          backgroundColor: '#f3f3e9',
-          opacity: isLoaded ? 1 : 0,
-          transition: 'opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+          backgroundColor: '#000000',
+          opacity: 1,
         }}
       />
     </div>
