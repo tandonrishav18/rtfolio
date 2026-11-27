@@ -115,10 +115,11 @@
       autoplay
       playsinline
       webkit-playsinline
+      muted
     ></video>
 
     <div id="mobile-preloader-sound-toggle" aria-label="Toggle audio">
-      click to mute
+      click to unmute
     </div>
   </div>
   <script>
@@ -128,7 +129,7 @@
       var toggleBtn = document.getElementById("mobile-preloader-sound-toggle");
       if (!overlay || !video || !toggleBtn) return;
 
-      var isMuted = false;
+      var isMuted = true;
       var isDone = false;
       var isFading = false;
 
@@ -153,7 +154,7 @@
         updateToggleText();
       }
 
-      // Start with sound on by default
+      // Try autoplay with sound first
       video.muted = false;
       video.volume = 1.0;
       var playPromise = video.play();
@@ -164,27 +165,12 @@
             updateToggleText();
           })
           .catch(function () {
-            // Autoplay policy prevented sound -> play muted so video doesn't stall,
-            // and unmute on the very first touch / interaction anywhere
+            // Autoplay policy prevented sound -> play muted and let user tap to unmute
             isMuted = true;
             video.muted = true;
             video.volume = 0;
             updateToggleText();
             video.play().catch(finish);
-
-            function unlockAudio() {
-              if (isDone || isFading) return;
-              setMuted(false);
-              ["touchstart", "pointerdown", "click", "keydown"].forEach(function (evt) {
-                window.removeEventListener(evt, unlockAudio);
-                if (overlay) overlay.removeEventListener(evt, unlockAudio);
-              });
-            }
-
-            ["touchstart", "pointerdown", "click", "keydown"].forEach(function (evt) {
-              window.addEventListener(evt, unlockAudio, { once: true, passive: true });
-              if (overlay) overlay.addEventListener(evt, unlockAudio, { once: true, passive: true });
-            });
           });
       }
 
