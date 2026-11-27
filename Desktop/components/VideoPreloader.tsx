@@ -69,11 +69,13 @@ export const VideoPreloader: React.FC<VideoPreloaderProps> = ({ onFadeStart, onC
 
     // Trigger home screen entrance animations at the exact moment fade-out begins
     setIsFadingOut(true);
+    window.scrollTo(0, 0);
     onFadeStart();
 
     // After smooth fade-out completes, unmount preloader overlay
     setTimeout(() => {
       setIsDone(true);
+      window.scrollTo(0, 0);
       onComplete();
     }, 700);
   };

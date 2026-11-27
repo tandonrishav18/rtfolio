@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -23,6 +23,7 @@ import { ClimoraWebpage } from './components/ClimoraWebpage';
 import { BePlusWebpage } from './components/BePlusWebpage';
 import { NivalaWebpage } from './components/NivalaWebpage';
 import { LilyStudioWebpage } from './components/LilyStudioWebpage';
+import { CorideWebpage } from './components/CorideWebpage';
 import { VideoPreloader } from './components/VideoPreloader';
 import { ExperienceItem, PublicationItem, CertificationItem, Project } from './types';
 import { PROJECTS, PERSONAL_INFO } from './data';
@@ -37,12 +38,21 @@ export default function App() {
   const [isClimoraWebpageOpen, setIsClimoraWebpageOpen] = useState(false);
   const [isBePlusWebpageOpen, setIsBePlusWebpageOpen] = useState(false);
   const [isLilyStudioWebpageOpen, setIsLilyStudioWebpageOpen] = useState(false);
+  const [isCorideWebpageOpen, setIsCorideWebpageOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isBeyondCodeOpen, setIsBeyondCodeOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [certificateViewerImage, setCertificateViewerImage] = useState<string | null>(null);
   const [startHomeAnimations, setStartHomeAnimations] = useState(false);
   const [isPreloaderComplete, setIsPreloaderComplete] = useState(false);
+
+  // Always reset to top scratch on reload
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     if (certificateViewerImage) {
@@ -69,16 +79,21 @@ export default function App() {
     setIsCineSuggestWebpageOpen(false);
     setIsClimoraWebpageOpen(false);
     setIsBePlusWebpageOpen(false);
+    setIsCorideWebpageOpen(false);
     setSelectedProject(null);
 
-    // Explicitly do not connect anything with rapido or i shape things (collage)
+    // Explicitly do not connect anything with i shape things (collage)
     if (
-      projId === 'rapido' ||
-      projId === 'coride' ||
       projId === 'artgallery' ||
       projId === 'collage' ||
       projId === 'ishapethings'
     ) {
+      return;
+    }
+
+    // Co-Ride × Rapido dedicated case study webpage
+    if (projId === 'rapido' || projId === 'coride') {
+      setIsCorideWebpageOpen(true);
       return;
     }
 
@@ -99,17 +114,25 @@ export default function App() {
 
   const handleNextProjectFromCurrent = (currentId: string) => {
     switch (currentId) {
-      case 'nivala':
-        openProjectById('cine-suggest'); // NIVALA -> CS
+      case 'climora-iot':
+      case 'climora':
+        openProjectById('cine-suggest'); // CLIMORA -> CS
         break;
       case 'cine-suggest':
+      case 'cine':
         openProjectById('be-plus'); // CS -> BE+
         break;
       case 'be-plus':
-        openProjectById('climora-iot'); // BE+ -> CLIMORA
+      case 'be':
+        openProjectById('rapido'); // BE+ -> RAPIDO
         break;
-      case 'climora-iot':
-        openProjectById('nivala'); // CLIMORA -> NIVALA
+      case 'rapido':
+      case 'coride':
+        openProjectById('nivala'); // RAPIDO -> NIVALA
+        break;
+      case 'nivala':
+      case 'surplus':
+        openProjectById('climora-iot'); // NIVALA -> CLIMORA
         break;
       default:
         openProjectById('cine-suggest');
@@ -127,6 +150,7 @@ export default function App() {
     setIsClimoraWebpageOpen(false);
     setIsBePlusWebpageOpen(false);
     setIsLilyStudioWebpageOpen(false);
+    setIsCorideWebpageOpen(false);
     setSelectedProject(null);
     setSelectedExperience(null);
     setSelectedCertification(null);
@@ -157,8 +181,14 @@ export default function App() {
       {/* Fullscreen Video Preloader Overlay */}
       {!isPreloaderComplete && (
         <VideoPreloader 
-          onFadeStart={() => setStartHomeAnimations(true)}
-          onComplete={() => setIsPreloaderComplete(true)}
+          onFadeStart={() => {
+            window.scrollTo(0, 0);
+            setStartHomeAnimations(true);
+          }}
+          onComplete={() => {
+            window.scrollTo(0, 0);
+            setIsPreloaderComplete(true);
+          }}
         />
       )}
 
@@ -248,6 +278,13 @@ export default function App() {
         onClose={() => setIsLilyStudioWebpageOpen(false)}
         onNavClick={handleGlobalNavClick}
         onOpenResume={handleOpenResume}
+      />
+
+      {/* Co-Ride × Rapido Dedicated Case Study Page */}
+      <CorideWebpage
+        isOpen={isCorideWebpageOpen}
+        onClose={() => setIsCorideWebpageOpen(false)}
+        onNextProject={() => handleNextProjectFromCurrent('rapido')}
       />
 
       {/* Modals & Dialog Viewers */}

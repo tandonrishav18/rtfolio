@@ -1,0 +1,210 @@
+@font-face {font-family:"Gveret Levin";src:url("assets/gveret-levin.ttf") format("truetype");font-display:swap}
+* {box-sizing:border-box}
+body,p {margin:0}
+body {background:#1e1e1e}
+main {container-type:inline-size}
+img {display:block}
+li {list-style:none}
+.sr-only {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.layout-1 { background:#ffca20;align-content:stretch;display:flex;flex-direction:column;height:57.77777778cqw;align-items:center;justify-content:center;overflow:clip;padding-bottom:20.06944444cqw;padding-top:18.19444444cqw;padding-inline:13.19444444cqw;position:relative }
+.layout-2 { align-content:stretch;display:flex;gap:0.83333333cqw;align-items:center;position:relative;flex-shrink:0;width:70.27777778cqw }
+.layout-3 { height:12.15277778cqw;position:relative;flex-shrink:0;width:34.30555556cqw }
+.layout-4 { position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100% }
+.layout-5 { height:11.77083333cqw;position:relative;flex-shrink:0;width:0 }
+.layout-6 { position:absolute;inset:0 -0.10416667cqw }
+.layout-7 { display:block;max-width:none;width:100%;height:100% }
+.layout-8 { height:11.45833333cqw;position:relative;flex-shrink:0;width:34.30555556cqw }
+.layout-9 { background:white;height:57.77777778cqw;overflow:clip;position:relative }
+.layout-10 { --tx:-50%;position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:center;left:50%;top:2.91666667cqw;width:59.58333333cqw;translate:var(--tx,0) var(--ty,0) }
+.layout-11 { overflow-wrap:break-word;font-family:"Gveret Levin",cursive;height:6.45833333cqw;line-height:normal;min-width:100%;font-style:normal;position:relative;flex-shrink:0;font-size:3.88888889cqw;color:black;width:min-content }
+.layout-12 { height:6.38888889cqw;position:relative;flex-shrink:0;width:16.80555556cqw }
+.layout-13 { position:absolute;inset:0;overflow:hidden;pointer-events:none }
+.layout-14 { position:absolute;height:100%;left:-8.21%;max-width:none;top:0;width:114.21% }
+.layout-15 { --tx:-50%;position:absolute;bottom:0;height:35.34722222cqw;left:50%;width:31.52777778cqw;translate:var(--tx,0) var(--ty,0) }
+.layout-16 { position:absolute;height:168.17%;left:-12.39%;max-width:none;top:-1.18%;width:125.8% }
+.phone-reveal { background:white }
+html:has(.phone-reveal.is-active) { overflow-anchor:none }
+.phone-reveal.is-active { height:calc(96cqw + var(--pin-extension,0px));overflow-anchor:none }
+.phone-reveal.is-active > section { position:sticky;top:min(0px, calc(100svh - 57.77777778cqw)) }
+.phone-reveal.is-active .layout-15 { transform:translateY(var(--phone-offset,100%)) }
+.layout-17 { overflow-wrap:break-word;position:absolute;font-family:"Gveret Levin",cursive;line-height:0;left:2.91666667cqw;font-style:normal;font-size:1.664375cqw;color:black;top:calc(50% - 6.45833333cqw);width:28.19444444cqw }
+.layout-18 { line-height:normal;margin-bottom:0 }
+.layout-19 { line-height:normal }
+.layout-20 { overflow-wrap:break-word;position:absolute;bottom:11.38888889cqw;font-family:"Gveret Levin",cursive;line-height:normal;font-style:normal;right:31.18055556cqw;font-size:2.08333333cqw;color:black;--tx:100%;--ty:100%;width:24.375cqw;translate:var(--tx,0) var(--ty,0) }
+.layout-21 { background:#ffca20;height:57.77777778cqw;overflow:clip;position:relative }
+.layout-22 { position:absolute;display:flex;height:17.41305556cqw;align-items:center;justify-content:center;right:-0.73333333cqw;top:-1.25cqw;width:25.10805556cqw }
+.layout-23 { flex:none;rotate:2.96deg }
+.layout-24 { height:16.18055556cqw;position:relative;width:24.30555556cqw }
+.layout-25 { position:absolute;display:flex;height:12.19402778cqw;align-items:center;justify-content:center;right:33.32708333cqw;top:0;width:17.15881944cqw }
+.layout-26 { flex:none;rotate:-4.78deg }
+.layout-27 { height:10.873125cqw;position:relative;width:16.30972222cqw }
+.layout-28 { position:absolute;display:flex;height:9.56625cqw;align-items:center;justify-content:center;right:21.74305556cqw;top:0.44375cqw;width:13.31444444cqw }
+.layout-29 { flex:none;rotate:-5.68deg }
+.layout-30 { height:8.36541667cqw;position:relative;width:12.548125cqw }
+.layout-31 { position:absolute;display:flex;height:13.36888889cqw;align-items:center;justify-content:center;right:33.31805556cqw;top:10.13888889cqw;width:19.04319444cqw }
+.layout-32 { flex:none;rotate:-3.8deg }
+.layout-33 { height:12.18354167cqw;position:relative;width:18.27534722cqw }
+.layout-34 { position:absolute;display:flex;height:15.02340278cqw;align-items:center;justify-content:center;right:29.19930556cqw;top:21.83472222cqw;width:21.82298611cqw }
+.layout-35 { flex:none;rotate:-2.3deg }
+.layout-36 { height:14.18027778cqw;position:relative;width:21.27041667cqw }
+.layout-37 { position:absolute;display:flex;height:18.48604167cqw;align-items:center;justify-content:center;right:4.35972222cqw;top:16.80555556cqw;width:27.09826389cqw }
+.layout-38 { flex:none;rotate:-1.63deg }
+.layout-39 { height:17.73625cqw;position:relative;width:26.604375cqw }
+.layout-40 { position:absolute;bottom:-2.02361111cqw;display:flex;height:14.80145833cqw;align-items:center;justify-content:center;right:20.89444444cqw;width:21.11965278cqw }
+.layout-41 { flex:none;rotate:-3.67deg }
+.layout-42 { height:13.53020833cqw;position:relative;width:20.29527778cqw }
+.layout-43 { position:absolute;bottom:-1.87430556cqw;display:flex;height:10.92326389cqw;align-items:center;justify-content:center;right:-1.86180556cqw;width:22.15715278cqw }
+.layout-44 { flex:none;rotate:-3.37deg }
+.layout-45 { height:9.66763889cqw;position:relative;width:21.62583333cqw }
+.layout-46 { position:absolute;height:149.13%;left:0;max-width:none;top:0;width:100% }
+.layout-47 { overflow-wrap:break-word;position:absolute;font-family:"Gveret Levin",cursive;line-height:0;left:2.91666667cqw;font-style:normal;font-size:1.52777778cqw;color:black;top:calc(50% - 15.625cqw);width:48.95833333cqw;white-space:pre-wrap }
+.layout-48 { position:absolute;bottom:7.975cqw;display:flex;height:15.983125cqw;align-items:center;justify-content:center;right:-2.83958333cqw;width:23.11715278cqw }
+.layout-49 { flex:none;rotate:-2.63deg }
+.layout-50 { height:14.96979167cqw;position:relative;width:22.45472222cqw }
+.layout-51 { position:absolute;bottom:10.13611111cqw;display:flex;height:11.72513889cqw;align-items:center;justify-content:center;right:31.94652778cqw;width:16.18506944cqw }
+.layout-52 { flex:none;rotate:-6.38deg }
+.layout-53 { height:10.10451389cqw;position:relative;width:15.15673611cqw }
+.layout-54 { position:absolute;bottom:12.01319444cqw;display:flex;height:9.86173611cqw;align-items:center;justify-content:center;right:18.63611111cqw;width:14.69715278cqw }
+.layout-55 { flex:none;rotate:-0.45deg }
+.layout-56 { height:9.7475cqw;position:relative;width:14.62125cqw }
+.layout-57 { position:absolute;display:flex;height:9.63263889cqw;align-items:center;justify-content:center;right:21.79236111cqw;top:9.43819444cqw;width:13.35465278cqw }
+.layout-58 { flex:none;rotate:-6.01deg }
+.layout-59 { position:absolute;bottom:-0.00833333cqw;height:25.77243056cqw;left:2.91666667cqw;width:18.54166667cqw }
+.layout-60 { position:absolute;height:145.79%;left:-17.27%;max-width:none;top:-0.05%;width:135.1% }
+.layout-61 { position:absolute;height:25.04930556cqw;left:2.91666667cqw;top:0;width:18.54166667cqw }
+.layout-62 { position:absolute;height:140.62%;left:-13%;max-width:none;top:-40.41%;width:126.67% }
+.layout-63 { overflow-wrap:break-word;position:absolute;font-family:"Gveret Levin",cursive;line-height:0;font-style:normal;right:65cqw;font-size:1.52777778cqw;color:black;top:calc(50% - 8.05555556cqw);--tx:100%;width:62.08333333cqw;white-space:pre-wrap;translate:var(--tx,0) var(--ty,0) }
+.layout-64 { background:#ffca20;height:57.77777778cqw;overflow:clip;width:100cqw;position:relative }
+.layout-66 { overflow-wrap:break-word;position:absolute;font-family:"Gveret Levin",cursive;line-height:0;left:2.91666667cqw;font-style:normal;font-size:1.52777778cqw;color:black;top:calc(50% - 15.13888889cqw);width:63.125cqw;white-space:pre-wrap }
+.layout-67 { position:absolute;height:25.48611111cqw;right:2.91666667cqw;top:2.91666667cqw;width:12.5cqw }
+.layout-68 { position:absolute;height:127.77%;left:-123.73%;max-width:none;top:-13.89%;width:347.46% }
+.layout-69 { position:absolute;bottom:2.91666667cqw;height:25.20833333cqw;right:19.23611111cqw;width:12.5cqw }
+.layout-70 { position:absolute;height:126.87%;left:-120.28%;max-width:none;top:-13.32%;width:341.51% }
+.layout-71 { position:absolute;height:20.97222222cqw;right:20.27777778cqw;top:5.20833333cqw;width:10.41666667cqw }
+.layout-72 { position:absolute;height:127.07%;left:-120.56%;max-width:none;top:-13.81%;width:341.67% }
+.layout-73 { position:absolute;bottom:4.93055556cqw;height:21.11111111cqw;right:3.95833333cqw;width:10.41666667cqw }
+.layout-74 { position:absolute;height:126.42%;left:-120.64%;max-width:none;top:-13.03%;width:341.74% }
+.layout-75 { overflow-wrap:break-word;position:absolute;font-family:"Gveret Levin",cursive;line-height:0;font-style:normal;right:63.26388889cqw;font-size:0cqw;color:black;top:calc(50% - 17.08333333cqw);--tx:100%;width:60.34722222cqw;translate:var(--tx,0) var(--ty,0) }
+.layout-76 { line-height:normal;margin-bottom:0;font-size:1.52777778cqw;white-space:pre-wrap }
+.layout-77 { margin-bottom:0;margin-inline-start:calc(var(--list-marker-font-size,0)*1.5*0) }
+.layout-78 { line-height:normal;font-size:1.52777778cqw }
+.layout-79 { line-height:normal;font-size:1.52777778cqw;white-space:pre-wrap }
+.layout-80 { position:absolute;height:25.68611111cqw;left:2.91666667cqw;top:2.91666667cqw;width:12.56118056cqw }
+.layout-81 { position:absolute;height:126.43%;left:-122.26%;max-width:none;top:-13.35%;width:344.7% }
+.layout-82 { position:absolute;bottom:2.94444444cqw;height:25.69902778cqw;left:19.30555556cqw;width:12.55486111cqw }
+.layout-83 { position:absolute;height:126.98%;left:-122.92%;max-width:none;top:-13.76%;width:346.57% }
+.layout-84 { position:absolute;height:21.31944444cqw;left:20.34722222cqw;top:5.06944444cqw;width:10.41666667cqw }
+.layout-85 { position:absolute;height:126.65%;left:-122.52%;max-width:none;top:-13.28%;width:345.95% }
+.layout-86 { position:absolute;bottom:4.16666667cqw;left:3.95833333cqw;top:33.40277778cqw;width:10.41666667cqw }
+.layout-87 { position:absolute;height:127.66%;left:-123.15%;max-width:none;top:-13.83%;width:347.2% }
+.layout-88 { overflow-wrap:break-word;position:absolute;font-family:"Gveret Levin",cursive;line-height:0;left:2.91666667cqw;font-style:normal;font-size:1.52777778cqw;color:black;top:calc(50% - 11.11111111cqw);width:61.73611111cqw;white-space:pre-wrap }
+.layout-89 { position:absolute;height:126.87%;left:-122.48%;max-width:none;top:-13.57%;width:345.32% }
+.layout-90 { position:absolute;height:21.18055556cqw;left:69.30555556cqw;top:5.06944444cqw;width:10.41666667cqw }
+.layout-91 { position:absolute;height:126.87%;left:-121.65%;max-width:none;top:-13.39%;width:343.47% }
+.layout-92 { position:absolute;bottom:5.06944444cqw;height:21.04166667cqw;right:3.95833333cqw;width:10.41666667cqw }
+.layout-93 { position:absolute;height:126.32%;left:-120.21%;max-width:none;top:-13.16%;width:340.43% }
+.layout-94 { position:absolute;bottom:2.91666667cqw;height:25.27777778cqw;left:68.26388889cqw;width:12.5cqw }
+.layout-95 { position:absolute;height:127.1%;left:-121.43%;max-width:none;top:-13.5%;width:342.86% }
+.layout-96 { overflow-wrap:break-word;position:absolute;font-family:"Gveret Levin",cursive;line-height:0;font-style:normal;right:64.23611111cqw;font-size:1.52777778cqw;color:black;top:calc(50% - 10.06944444cqw);--tx:100%;width:61.31944444cqw;white-space:pre-wrap;translate:var(--tx,0) var(--ty,0) }
+.layout-97 { position:absolute;height:21.25cqw;left:20.34722222cqw;top:5.13888889cqw;width:10.41666667cqw }
+.layout-98 { position:absolute;height:127.55%;left:-123.29%;max-width:none;top:-13.73%;width:346.57% }
+.layout-99 { position:absolute;bottom:2.91666667cqw;height:25.48611111cqw;left:19.23611111cqw;width:12.5cqw }
+.layout-100 { position:absolute;height:127.89%;left:-123.91%;max-width:none;top:-14.12%;width:347.83% }
+.layout-101 { position:absolute;height:25.69444444cqw;left:2.91666667cqw;top:2.91666667cqw;width:12.5cqw }
+.layout-102 { position:absolute;height:126.09%;left:-122.3%;max-width:none;top:-13.22%;width:345.32% }
+.layout-103 { position:absolute;bottom:5cqw;height:21.31944444cqw;left:3.95833333cqw;width:10.41666667cqw }
+.layout-104 { position:absolute;height:126.76%;left:-121.98%;max-width:none;top:-13.82%;width:345.95% }
+.layout-105 { overflow-wrap:break-word;position:absolute;font-family:"Gveret Levin",cursive;line-height:0;left:2.91666667cqw;font-style:normal;font-size:1.52777778cqw;color:black;top:calc(50% - 11.59722222cqw);width:61.73611111cqw;white-space:pre-wrap }
+.layout-106 { position:absolute;aspect-ratio:313/632;left:69.23611111cqw;right:20.34722222cqw;top:5.20833333cqw }
+.layout-107 { position:absolute;height:127.31%;left:-121.31%;max-width:none;top:-13.77%;width:343.04% }
+.layout-108 { position:absolute;aspect-ratio:440/901;left:84.58333333cqw;right:2.91666667cqw;top:2.91666667cqw }
+.layout-109 { position:absolute;height:125.94%;left:-121.69%;max-width:none;top:-12.73%;width:344.37% }
+.layout-110 { position:absolute;bottom:5cqw;height:21.38888889cqw;right:3.95833333cqw;width:10.41666667cqw }
+.layout-111 { position:absolute;height:126.32%;left:-122.48%;max-width:none;top:-13.33%;width:345.32% }
+.layout-112 { position:absolute;bottom:2.91666667cqw;height:25.55555556cqw;left:68.19444444cqw;width:12.5cqw }
+.layout-113 { position:absolute;height:125.87%;left:-120.89%;max-width:none;top:-12.94%;width:342.86% }
+.video-player { position:absolute;top:6.25cqw;left:50%;transform:translateX(-50%);width:56.17916667cqw;aspect-ratio:1080/762 }
+.video-toggle,.sound-toggle { border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent }
+.video-toggle { position:relative;display:block;width:100%;height:100%;background:transparent }
+.play-icon { position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(36px,5cqw,64px);pointer-events:none;filter:drop-shadow(0 0 2px white) }
+.play-icon[hidden],.sound-cross,.sound-toggle.is-muted .sound-waves { display:none }
+.sound-toggle.is-muted .sound-cross { display:inline }
+.sound-toggle { display:grid;place-items:center;background:transparent;color:#ffda19;position:absolute;right:clamp(4px,1cqw,14px);bottom:clamp(4px,1cqw,14px);width:44px;height:44px }
+.sound-toggle svg { width:28px;height:28px }
+.video-toggle:focus:not(:focus-visible) { outline:none }
+.video-toggle video { display:block;width:100%;height:100%;pointer-events:none }
+.layout-116 { position:absolute;background:#ffca20;bottom:0;height:5.76388889cqw;left:0;overflow:clip;right:0 }
+.layout-117 { overflow-wrap:break-word;position:absolute;font-family:"Gveret Levin",cursive;line-height:normal;left:calc(50% - 29.86111111cqw);font-style:normal;font-size:2.08333333cqw;color:black;top:calc(50% - 1.35416667cqw);white-space:nowrap }
+.layout-66 p { line-height:2.01388889cqw }
+.stickers-ready .sticker { opacity:0 }
+.stickers-playing .sticker { animation:sticker-pop 320ms ease-out var(--popup-delay) both }
+@keyframes sticker-pop {
+  0% { opacity:0;transform:scale(.75) }
+  65% { opacity:1;transform:scale(1.045) }
+  100% { opacity:1;transform:scale(1) }
+}
+@media (prefers-reduced-motion:reduce) {
+  .stickers-ready .sticker { opacity:1;animation:none }
+}
+
+
+/* ── Static overrides: remove all scroll/pop animations ── */
+
+/* Phone reveal: always visible, no scroll-pin behaviour */
+.phone-reveal.is-active { height: auto !important; overflow-anchor: auto !important; }
+.phone-reveal.is-active > section { position: static !important; }
+.phone-reveal.is-active .layout-15 { transform: none !important; }
+
+/* Stickers: always fully visible, no pop-in animation */
+.stickers-ready .sticker { opacity: 1 !important; }
+.stickers-playing .sticker { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+
+/* ── Next Project Section ── */
+body { background: #ffffff !important; }
+
+.next-project-section {
+  width: 100%;
+  background: #ffffff !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem 5rem 1rem;
+  box-sizing: border-box;
+}
+
+.next-project-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: #000000;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  transition: color 200ms ease;
+  text-decoration: none;
+  padding: 0;
+  user-select: none;
+}
+
+.next-project-button:hover,
+.next-project-button:active {
+  color: #555555;
+}
+
+.next-project-arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  transition: transform 200ms ease;
+}
+
+.next-project-button:hover .next-project-arrow {
+  transform: translateX(4px);
+}
