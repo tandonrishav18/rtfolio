@@ -51,13 +51,8 @@
   var resumeLink = document.querySelector(".btn-resume");
   function syncResumeLink() {
     if (!resumeLink) return;
-    if (mq.matches) {
-      resumeLink.setAttribute("target", "_blank");
-      resumeLink.setAttribute("rel", "noopener noreferrer");
-    } else {
-      resumeLink.removeAttribute("target");
-      resumeLink.removeAttribute("rel");
-    }
+    resumeLink.setAttribute("target", "_blank");
+    resumeLink.setAttribute("rel", "noopener noreferrer");
   }
 
   setMenuState(false);
